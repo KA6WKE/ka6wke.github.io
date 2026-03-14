@@ -2,7 +2,7 @@
 
 **Your guide to AWS certification success**
 
-[![Website](https://img.shields.io/badge/Website-cloudpathacademy.ka6wke.net-blue)](https://cloudpathacademy.ka6wke.net)
+[![Website](https://img.shields.io/badge/Website-www.cloudpathacademy.com-blue)](https://www.cloudpathacademy.com)
 [![License: CC BY-NC-SA 4.0](https://img.shields.io/badge/License-CC%20BY--NC--SA%204.0-lightgrey.svg)](https://creativecommons.org/licenses/by-nc-sa/4.0/)
 
 ---
@@ -64,7 +64,7 @@ Every study guide is built around the official AWS exam domain structure with di
 ## Built With
 
 - **Platform** — Jekyll with the Slate theme, hosted on GitHub Pages
-- **Domain** — Custom domain at cloudpathacademy.ka6wke.net
+- **Domain** — Custom domain at www.cloudpathacademy.com
 - **Content** — Markdown study guides organized by official exam domains
 
 ### Repository Structure
@@ -111,7 +111,7 @@ All site content is licensed under [Creative Commons BY-NC-SA 4.0](https://creat
 
 ## Contact
 
-- **Website** — [cloudpathacademy.ka6wke.net](https://cloudpathacademy.ka6wke.net)
+- **Website** — [www.cloudpathacademy.com](https://www.cloudpathacademy.com)
 - **GitHub** — [github.com/KA6WKE](https://github.com/KA6WKE)
 - **LinkedIn** — [Mark Schoonover](https://www.linkedin.com/in/markschoonover/)
 

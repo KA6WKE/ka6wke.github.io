@@ -1,6 +1,6 @@
 title: CloudPath Academy
 description: Your guide to AWS certification success
-url: "https://cloudpathacademy.ka6wke.net"
+url: "https://www.cloudpathacademy.com"
 
 theme: jekyll-theme-slate
 
@@ -13,3 +13,4 @@ exclude:
   - Gemfile
   - Gemfile.lock
   - README.md
+  - dnstodo.md
