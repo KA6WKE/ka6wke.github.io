@@ -1,0 +1,210 @@
+AWSTemplateFormatVersion: "2010-09-09"
+Description: >
+  Broken Labs - S3 Lab 01.
+  An S3 bucket configured to serve static assets publicly. Users are reporting
+  they cannot access files even though the stack deployed successfully.
+  Licensed under CC BY-NC-SA 4.0: https://creativecommons.org/licenses/by-nc-sa/4.0/
+  Developed by: Mark Schoonover <mark.schoonover@gmail.com>
+
+Resources:
+
+  LabBucket:
+    Type: AWS::S3::Bucket
+    Properties:
+      BucketName: !Sub "brokenlabs-lab-01-${AWS::Region}-${AWS::AccountId}"
+      PublicAccessBlockConfiguration:
+        BlockPublicAcls: false
+        BlockPublicPolicy: false
+        IgnorePublicAcls: false
+        RestrictPublicBuckets: false
+
+  LabBucketPolicy:
+    Type: AWS::S3::BucketPolicy
+    Properties:
+      Bucket: !Ref LabBucket
+      PolicyDocument:
+        Version: "2012-10-17"
+        Statement:
+          - Sid: PublicReadGetObject
+            Effect: Allow
+            Principal: "*"
+            Action: s3:GetObject
+            Resource: !Sub "arn:aws:s3:::${LabBucket}/*"
+
+  LabSetupRole:
+    Type: AWS::IAM::Role
+    Properties:
+      AssumeRolePolicyDocument:
+        Version: "2012-10-17"
+        Statement:
+          - Effect: Allow
+            Principal:
+              Service: lambda.amazonaws.com
+            Action: sts:AssumeRole
+      ManagedPolicyArns:
+        - arn:aws:iam::aws:policy/service-role/AWSLambdaBasicExecutionRole
+      Policies:
+        - PolicyName: LabSetupPolicy
+          PolicyDocument:
+            Version: "2012-10-17"
+            Statement:
+              - Effect: Allow
+                Action:
+                  - s3:PutObject
+                  - s3:DeleteObject
+                  - s3:ListBucket
+                  - s3:PutBucketPublicAccessBlock
+                  - s3:DeleteBucketPolicy
+                Resource:
+                  - !GetAtt LabBucket.Arn
+                  - !Sub "${LabBucket.Arn}/*"
+
+  LabSetupFunction:
+    Type: AWS::Lambda::Function
+    Properties:
+      Runtime: python3.12
+      Handler: index.handler
+      Role: !GetAtt LabSetupRole.Arn
+      Timeout: 60
+      Code:
+        ZipFile: |
+          import boto3
+          import cfnresponse
+
+          INDEX_HTML = '''<!DOCTYPE html>
+          <html lang="en">
+          <head>
+            <meta charset="UTF-8" />
+            <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+            <title>AWS Cloud Path Academy</title>
+            <style>
+              * {
+                box-sizing: border-box;
+                margin: 0;
+                padding: 0;
+              }
+              body {
+                font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+                background: linear-gradient(to bottom, #1976D2, #1565C0);
+                color: #e8eaed;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                min-height: 100vh;
+              }
+              .container {
+                text-align: center;
+                padding: 2rem;
+              }
+              .logo {
+                font-size: 0.85rem;
+                font-weight: 600;
+                letter-spacing: 0.2em;
+                text-transform: uppercase;
+                color: #ff9900;
+                margin-bottom: 1rem;
+              }
+              h1 {
+                font-size: 2.5rem;
+                font-weight: 700;
+                color: #ffffff;
+                margin-bottom: 0.5rem;
+              }
+              h2 {
+                font-size: 1.2rem;
+                font-weight: 400;
+                color: #9aa0a6;
+              }
+              .badge {
+                display: inline-block;
+                margin-top: 2rem;
+                padding: 0.4rem 1rem;
+                border: 1px solid #ff9900;
+                border-radius: 4px;
+                font-size: 0.8rem;
+                color: #ff9900;
+                letter-spacing: 0.1em;
+              }
+              .site-link {
+                display: block;
+                margin-top: 1rem;
+                font-size: 0.8rem;
+                color: #ff9900;
+                text-decoration: none;
+                letter-spacing: 0.05em;
+              }
+              .site-link:hover {
+                text-decoration: underline;
+              }
+            </style>
+          </head>
+          <body>
+            <div class="container">
+              <h2 class="logo">AWS Cloud Path Academy</h2>
+              <h1>AWS Broken Labs</h1>
+              <h2>If you can read this, the lab is fixed.</h2>
+              <div class="badge">Lab 01 &mdash; S3 Access Troubleshooting</div>
+              <a class="site-link" href="https://cloudpathacademy.ka6wke.net">cloudpathacademy.ka6wke.net</a>
+            </div>
+          </body>
+          </html>'''
+
+          def handler(event, context):
+              s3 = boto3.client('s3')
+              bucket = event['ResourceProperties']['BucketName']
+              try:
+                  if event['RequestType'] in ('Create', 'Update'):
+                      s3.put_object(
+                          Bucket=bucket,
+                          Key='index.html',
+                          Body=INDEX_HTML.strip().encode('utf-8'),
+                          ContentType='text/html',
+                      )
+                      s3.put_public_access_block(
+                          Bucket=bucket,
+                          PublicAccessBlockConfiguration={
+                              'BlockPublicAcls': False,
+                              'IgnorePublicAcls': False,
+                              'BlockPublicPolicy': True,
+                              'RestrictPublicBuckets': False,
+                          },
+                      )
+                      s3.delete_bucket_policy(Bucket=bucket)
+                  elif event['RequestType'] == 'Delete':
+                      s3.put_public_access_block(
+                          Bucket=bucket,
+                          PublicAccessBlockConfiguration={
+                              'BlockPublicAcls': False,
+                              'IgnorePublicAcls': False,
+                              'BlockPublicPolicy': False,
+                              'RestrictPublicBuckets': False,
+                          },
+                      )
+                      paginator = s3.get_paginator('list_objects_v2')
+                      for page in paginator.paginate(Bucket=bucket):
+                          objects = page.get('Contents', [])
+                          if objects:
+                              s3.delete_objects(
+                                  Bucket=bucket,
+                                  Delete={'Objects': [{'Key': o['Key']} for o in objects]},
+                              )
+                  cfnresponse.send(event, context, cfnresponse.SUCCESS, {})
+              except Exception as e:
+                  cfnresponse.send(event, context, cfnresponse.FAILED, {'Error': str(e)})
+
+  LabSetup:
+    Type: Custom::LabSetup
+    DependsOn: LabBucketPolicy
+    Properties:
+      ServiceToken: !GetAtt LabSetupFunction.Arn
+      BucketName: !Ref LabBucket
+
+Outputs:
+
+  BucketName:
+    Description: Name of the S3 bucket
+    Value: !Ref LabBucket
+
+  BucketURL:
+    Description: Regional S3 URL for testing public access (should fail until fixed)
+    Value: !Sub "https://${LabBucket}.s3.${AWS::Region}.amazonaws.com/index.html"
