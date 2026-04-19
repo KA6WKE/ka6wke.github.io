@@ -1,3 +1,11 @@
+---
+layout: default
+title: "Lab 06: EC2 User Data"
+lab_level: associate
+lab_service: ec2
+lab_number: "06"
+---
+
 # Lab 06 - EC2 User Data
 
 > **Difficulty**: Intermediate
@@ -32,7 +40,7 @@ The stack deployed without errors. The security group and networking are correct
 
 1. Open the [AWS CloudFormation console](https://console.aws.amazon.com/cloudformation)
 2. Click **Create stack** > **With new resources (standard)**
-3. Select **Upload a template file** and upload `lab-06-user-data.yaml`
+3. Select **Upload a template file** and upload <a href="lab-06-ec2-user-data.yaml" download>lab-06-ec2-user-data.yaml</a>
 4. Enter a stack name (e.g., `brokenlabs-ec2-lab-06`) and click **Next** > **Next** > **Submit**
 5. Wait for the stack status to reach **CREATE_COMPLETE** (takes 2–3 minutes)
 6. Open the stack **Outputs** tab — you will see `InstanceId`, `InstancePublicIP`, and `WebPageURL`

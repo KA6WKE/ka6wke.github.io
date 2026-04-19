@@ -1,3 +1,11 @@
+---
+layout: default
+title: "Lab 02: EC2 Instance Connect"
+lab_level: associate
+lab_service: ec2
+lab_number: "02"
+---
+
 # Lab 02 - EC2 Instance Connect
 
 > **Difficulty**: Beginner
@@ -29,7 +37,7 @@ The stack deployed without errors. Apache is installed and the web page is acces
 
 1. Open the [AWS CloudFormation console](https://console.aws.amazon.com/cloudformation)
 2. Click **Create stack** > **With new resources (standard)**
-3. Select **Upload a template file** and upload `lab-02-instance-connect.yaml`
+3. Select **Upload a template file** and upload <a href="lab-02-ec2-instance-connect.yaml" download>lab-02-ec2-instance-connect.yaml</a>
 4. Enter a stack name (e.g., `brokenlabs-ec2-lab-02`) and click **Next** > **Next** > **Submit**
 5. Wait for the stack status to reach **CREATE_COMPLETE** (takes 2–3 minutes)
 6. Open the stack **Outputs** tab — you will see `InstanceId`, `InstancePublicIP`, and `WebPageURL`

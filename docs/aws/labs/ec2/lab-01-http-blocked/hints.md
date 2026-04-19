@@ -1,10 +1,14 @@
+---
+layout: default
+---
+
 # Hints — EC2 Security Groups - Lab 01
 
 Open each hint only after you've spent time investigating on your own.
 
 ---
 
-<details>
+<details markdown="1">
 <summary>Hint 1 — Where to look</summary>
 
 The instance is running and Apache is installed. The browser request never even reaches the
@@ -19,7 +23,7 @@ Navigate to the EC2 console, select your instance, and look at the **Security** 
 
 ---
 
-<details>
+<details markdown="1">
 <summary>Hint 2 — Read the security group rules</summary>
 
 Click on the security group attached to your instance. Open the **Inbound rules** tab.
@@ -30,7 +34,7 @@ What ports are currently allowed? Is port 80 (HTTP) listed?
 
 ---
 
-<details>
+<details markdown="1">
 <summary>Hint 3 — What needs to be added</summary>
 
 Security groups are deny-by-default. Traffic on port 80 (HTTP) must be explicitly allowed
@@ -42,7 +46,7 @@ You need to add an inbound rule that allows TCP traffic on port 80.
 
 ---
 
-<details>
+<details markdown="1">
 <summary><span style="color: red;">Spoiler Alert</span> — Full Solution</summary>
 
 **Root cause**: The security group attached to the instance has no inbound rule for port 80 (HTTP).

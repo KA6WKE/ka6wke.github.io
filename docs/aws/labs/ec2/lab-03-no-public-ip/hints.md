@@ -1,10 +1,14 @@
+---
+layout: default
+---
+
 # Hints — EC2 Elastic IP - Lab 03
 
 Open each hint only after you've spent time investigating on your own.
 
 ---
 
-<details>
+<details markdown="1">
 <summary>Hint 1 — Where to look</summary>
 
 The error is `ERR_CONNECTION_TIMED_OUT` — the same symptom as a blocked security group.
@@ -18,7 +22,7 @@ In the EC2 console, select your instance and check the **Details** tab. What doe
 
 ---
 
-<details>
+<details markdown="1">
 <summary>Hint 2 — The Elastic IP</summary>
 
 The instance has no public IP. The stack Outputs include an `ElasticIPAddress` — an Elastic IP
@@ -31,7 +35,7 @@ Navigate to **EC2 → Elastic IPs**. Find the EIP from the Outputs. What does th
 
 ---
 
-<details>
+<details markdown="1">
 <summary>Hint 3 — How to associate it</summary>
 
 An Elastic IP must be explicitly associated with an EC2 instance before it can route traffic
@@ -44,7 +48,7 @@ In the EC2 console, go to **Elastic IPs**, select the unassociated EIP, and look
 
 ---
 
-<details>
+<details markdown="1">
 <summary><span style="color: red;">Spoiler Alert</span> — Full Solution</summary>
 
 **Root cause**: The subnet has auto-assign public IP disabled, so the instance launched with

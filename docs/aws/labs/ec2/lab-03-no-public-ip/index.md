@@ -1,3 +1,11 @@
+---
+layout: default
+title: "Lab 03: EC2 Elastic IP"
+lab_level: associate
+lab_service: ec2
+lab_number: "03"
+---
+
 # Lab 03 - EC2 Elastic IP
 
 > **Difficulty**: Beginner
@@ -37,7 +45,7 @@ The stack deployed without errors. Apache is running on the instance.
 
 1. Open the [AWS CloudFormation console](https://console.aws.amazon.com/cloudformation)
 2. Click **Create stack** > **With new resources (standard)**
-3. Select **Upload a template file** and upload `lab-03-no-public-ip.yaml`
+3. Select **Upload a template file** and upload <a href="lab-03-ec2-elastic-ip.yaml" download>lab-03-ec2-elastic-ip.yaml</a>
 4. Enter a stack name (e.g., `brokenlabs-ec2-lab-03`) and click **Next** > **Next** > **Submit**
 5. Wait for the stack status to reach **CREATE_COMPLETE** (takes 2–3 minutes)
 6. Open the stack **Outputs** tab — you will see `InstanceId`, `ElasticIPAddress`, and `WebPageURL`

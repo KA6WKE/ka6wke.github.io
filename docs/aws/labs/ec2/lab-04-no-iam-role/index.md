@@ -1,3 +1,11 @@
+---
+layout: default
+title: "Lab 04: EC2 SSM Session Manager"
+lab_level: associate
+lab_service: ec2
+lab_number: "04"
+---
+
 # Lab 04 - EC2 SSM Session Manager
 
 > **Difficulty**: Beginner
@@ -28,7 +36,7 @@ The stack deployed without errors. The web page loads. The instance has no IAM r
 
 1. Open the [AWS CloudFormation console](https://console.aws.amazon.com/cloudformation)
 2. Click **Create stack** > **With new resources (standard)**
-3. Select **Upload a template file** and upload `lab-04-no-iam-role.yaml`
+3. Select **Upload a template file** and upload <a href="lab-04-ec2-ssm-session-manager.yaml" download>lab-04-ec2-ssm-session-manager.yaml</a>
 4. Enter a stack name (e.g., `brokenlabs-ec2-lab-04`) and click **Next** > **Next** > **Submit**
 5. Wait for the stack status to reach **CREATE_COMPLETE** (takes 2–3 minutes)
 6. Open the stack **Outputs** tab — you will see `InstanceId`, `InstancePublicIP`, and `WebPageURL`

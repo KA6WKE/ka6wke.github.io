@@ -1,10 +1,14 @@
+---
+layout: default
+---
+
 # Hints — EC2 Instance Connect - Lab 02
 
 Open each hint only after you've spent time investigating on your own.
 
 ---
 
-<details>
+<details markdown="1">
 <summary>Hint 1 — What Instance Connect needs</summary>
 
 EC2 Instance Connect works by sending a temporary SSH public key to the instance over the
@@ -19,7 +23,7 @@ Check the security group attached to your instance.
 
 ---
 
-<details>
+<details markdown="1">
 <summary>Hint 2 — Read the security group rules</summary>
 
 Navigate to the EC2 console, select your instance, and open the **Security** tab.
@@ -34,7 +38,7 @@ SSH are handled on separate ports.
 
 ---
 
-<details>
+<details markdown="1">
 <summary>Hint 3 — What needs to be added</summary>
 
 Instance Connect requires inbound TCP port 22 to be open in the security group.
@@ -45,7 +49,7 @@ separate and must be explicitly allowed.
 
 ---
 
-<details>
+<details markdown="1">
 <summary><span style="color: red;">Spoiler Alert</span> — Full Solution</summary>
 
 **Root cause**: The security group has an inbound rule for port 80 (HTTP) but no rule for

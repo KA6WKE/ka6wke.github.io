@@ -1,10 +1,14 @@
+---
+layout: default
+---
+
 # Hints — EC2 IAM / Session Manager - Lab 05
 
 Open each hint only after you've spent time investigating on your own.
 
 ---
 
-<details>
+<details markdown="1">
 <summary>Hint 1 — What Session Manager needs</summary>
 
 AWS Systems Manager Session Manager connects to an EC2 instance through the SSM agent —
@@ -20,7 +24,7 @@ What policies are attached to it?
 
 ---
 
-<details>
+<details markdown="1">
 <summary>Hint 2 — The role has no policies</summary>
 
 The IAM role exists and is attached to the instance — but it has no policies. A role with
@@ -33,7 +37,7 @@ Session Manager requires a specific AWS managed policy. What is that policy?
 
 ---
 
-<details>
+<details markdown="1">
 <summary>Hint 3 — The required policy</summary>
 
 Session Manager requires the `AmazonSSMManagedInstanceCore` AWS managed policy. This policy
@@ -51,7 +55,7 @@ Reboot instance) and try again after 1–2 minutes.
 
 ---
 
-<details>
+<details markdown="1">
 <summary><span style="color: red;">Spoiler Alert</span> — Full Solution</summary>
 
 **Root cause**: The IAM role attached to the instance has no policies. The SSM agent on the

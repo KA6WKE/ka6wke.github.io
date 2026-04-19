@@ -1,3 +1,11 @@
+---
+layout: default
+title: "Lab 01: EC2 Security Groups"
+lab_level: associate
+lab_service: ec2
+lab_number: "01"
+---
+
 # Lab 01 - EC2 Security Groups
 
 > **Difficulty**: Beginner
@@ -29,7 +37,7 @@ The stack deployed without errors. Apache is installed and running on the instan
 
 1. Open the [AWS CloudFormation console](https://console.aws.amazon.com/cloudformation)
 2. Click **Create stack** > **With new resources (standard)**
-3. Select **Upload a template file** and upload `lab-01-http-blocked.yaml`
+3. Select **Upload a template file** and upload <a href="lab-01-ec2-security-groups.yaml" download>lab-01-ec2-security-groups.yaml</a>
 4. Enter a stack name (e.g., `brokenlabs-ec2-lab-01`) and click **Next** > **Next** > **Submit**
 5. Wait for the stack status to reach **CREATE_COMPLETE** (takes 2–3 minutes)
 6. Open the stack **Outputs** tab — you will see `InstanceId`, `InstancePublicIP`, and `WebPageURL`

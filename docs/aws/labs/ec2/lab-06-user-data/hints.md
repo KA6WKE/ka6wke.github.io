@@ -1,10 +1,14 @@
+---
+layout: default
+---
+
 # Hints — EC2 User Data - Lab 06
 
 Open each hint only after you've spent time investigating on your own.
 
 ---
 
-<details>
+<details markdown="1">
 <summary>Hint 1 — Connection refused vs timed out</summary>
 
 The browser shows **ERR_CONNECTION_REFUSED**, not a timeout.
@@ -24,7 +28,7 @@ systemctl status httpd
 
 ---
 
-<details>
+<details markdown="1">
 <summary>Hint 2 — Check the startup log</summary>
 
 User data scripts run automatically when an instance first launches. If the script fails,
@@ -42,7 +46,7 @@ Look for any errors near the package installation step.
 
 ---
 
-<details>
+<details markdown="1">
 <summary>Hint 3 — The package name</summary>
 
 The log shows an error like:
@@ -59,7 +63,7 @@ a different package name. What is the correct package name for Apache on Amazon 
 
 ---
 
-<details>
+<details markdown="1">
 <summary><span style="color: red;">Spoiler Alert</span> — Full Solution</summary>
 
 **Root cause**: The user data script installs `apache2`, which is the Ubuntu/Debian package

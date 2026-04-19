@@ -1,10 +1,14 @@
+---
+layout: default
+---
+
 # Hints — EC2 SSM Session Manager - Lab 04
 
 Open each hint only after you've spent time investigating on your own.
 
 ---
 
-<details>
+<details markdown="1">
 <summary>Hint 1 — What Session Manager needs</summary>
 
 Session Manager connects to EC2 instances through the SSM agent running on the instance.
@@ -22,7 +26,7 @@ In the EC2 console, select your instance and check the **Security** tab. What do
 
 ---
 
-<details>
+<details markdown="1">
 <summary>Hint 2 — Create a role for EC2</summary>
 
 The instance has no IAM role. You need to:
@@ -38,7 +42,7 @@ In the IAM console, go to **Roles → Create role**. Under **Trusted entity type
 
 ---
 
-<details>
+<details markdown="1">
 <summary>Hint 3 — Attach the role to the running instance</summary>
 
 You can attach an IAM role to an already-running EC2 instance — you do not need to stop it
@@ -55,7 +59,7 @@ retry Session Manager. If the **Connect** button remains grayed out, reboot the 
 
 ---
 
-<details>
+<details markdown="1">
 <summary><span style="color: red;">Spoiler Alert</span> — Full Solution</summary>
 
 **Root cause**: The instance was deployed without an IAM instance profile. Without an attached
