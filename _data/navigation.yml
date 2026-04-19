@@ -144,6 +144,23 @@
           url: /docs/aws/scs-c03/Domain-6-Security-Foundations-Governance
 - title: AWS Broken Labs
   items:
+    - title: EC2 Troubleshooting
+      url: /docs/aws/labs/ec2
+      items:
+        - title: "<span style='color: red;'>START HERE</span>"
+          url: /docs/aws/labs/ec2
+        - title: "Lab 01 — EC2 Security Groups"
+          url: /docs/aws/labs/ec2/lab-01-http-blocked
+        - title: "Lab 02 — EC2 Instance Connect"
+          url: /docs/aws/labs/ec2/lab-02-instance-connect
+        - title: "Lab 03 — EC2 Elastic IP"
+          url: /docs/aws/labs/ec2/lab-03-no-public-ip
+        - title: "Lab 04 — EC2 SSM Session Manager"
+          url: /docs/aws/labs/ec2/lab-04-no-iam-role
+        - title: "Lab 05 — SSM Session Manager"
+          url: /docs/aws/labs/ec2/lab-05-missing-ssm-policy
+        - title: "Lab 06 — EC2 User Data"
+          url: /docs/aws/labs/ec2/lab-06-user-data
     - title: S3 Troubleshooting
       url: /docs/aws/labs/s3
       items:
