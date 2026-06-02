@@ -1,0 +1,315 @@
+AWSTemplateFormatVersion: "2010-09-09"
+Description: >
+  Broken Labs - VPC Lab 08.
+  A VPC peering connection exists between two VPCs but routes are missing from both
+  route tables. Instances in the peered VPCs cannot communicate.
+  Licensed under CC BY-NC-SA 4.0: https://creativecommons.org/licenses/by-nc-sa/4.0/
+  Developed by: Mark Schoonover <mark.schoonover@gmail.com>
+
+Resources:
+
+  # --- VPC A (10.0.0.0/16) — web server ---
+
+  LabVPCA:
+    Type: AWS::EC2::VPC
+    Properties:
+      CidrBlock: 10.0.0.0/16
+      EnableDnsSupport: true
+      EnableDnsHostnames: true
+      Tags:
+        - Key: Name
+          Value: brokenlabs-vpc-lab-08-vpc-a
+
+  LabSubnetA:
+    Type: AWS::EC2::Subnet
+    Properties:
+      VpcId: !Ref LabVPCA
+      CidrBlock: 10.0.1.0/24
+      AvailabilityZone: !Select [0, !GetAZs '']
+      MapPublicIpOnLaunch: true
+      Tags:
+        - Key: Name
+          Value: brokenlabs-vpc-lab-08-subnet-a
+
+  LabIGWA:
+    Type: AWS::EC2::InternetGateway
+    Properties:
+      Tags:
+        - Key: Name
+          Value: brokenlabs-vpc-lab-08-igw-a
+
+  LabIGWAttachA:
+    Type: AWS::EC2::VPCGatewayAttachment
+    Properties:
+      VpcId: !Ref LabVPCA
+      InternetGatewayId: !Ref LabIGWA
+
+  LabRouteTableA:
+    Type: AWS::EC2::RouteTable
+    Properties:
+      VpcId: !Ref LabVPCA
+      Tags:
+        - Key: Name
+          Value: brokenlabs-vpc-lab-08-rt-a
+
+  LabRouteAInternet:
+    Type: AWS::EC2::Route
+    DependsOn: LabIGWAttachA
+    Properties:
+      RouteTableId: !Ref LabRouteTableA
+      DestinationCidrBlock: 0.0.0.0/0
+      GatewayId: !Ref LabIGWA
+
+  LabSNAssocA:
+    Type: AWS::EC2::SubnetRouteTableAssociation
+    Properties:
+      SubnetId: !Ref LabSubnetA
+      RouteTableId: !Ref LabRouteTableA
+
+  LabSGA:
+    Type: AWS::EC2::SecurityGroup
+    Properties:
+      GroupDescription: Allow HTTP from VPC B
+      VpcId: !Ref LabVPCA
+      SecurityGroupIngress:
+        - IpProtocol: tcp
+          FromPort: 80
+          ToPort: 80
+          CidrIp: 10.1.0.0/16
+      Tags:
+        - Key: Name
+          Value: brokenlabs-vpc-lab-08-sg-a
+
+  LabIAMRoleA:
+    Type: AWS::IAM::Role
+    Properties:
+      RoleName: brokenlabs-vpc-lab-08-role-a
+      AssumeRolePolicyDocument:
+        Version: "2012-10-17"
+        Statement:
+          - Effect: Allow
+            Principal:
+              Service: ec2.amazonaws.com
+            Action: sts:AssumeRole
+      ManagedPolicyArns:
+        - arn:aws:iam::aws:policy/AmazonSSMManagedInstanceCore
+
+  LabInstanceProfileA:
+    Type: AWS::IAM::InstanceProfile
+    Properties:
+      InstanceProfileName: brokenlabs-vpc-lab-08-profile-a
+      Roles:
+        - !Ref LabIAMRoleA
+
+  LabInstanceA:
+    Type: AWS::EC2::Instance
+    Properties:
+      InstanceType: t2.micro
+      ImageId: "{{resolve:ssm:/aws/service/ami-amazon-linux-latest/al2023-ami-kernel-default-x86_64}}"
+      SubnetId: !Ref LabSubnetA
+      SecurityGroupIds:
+        - !Ref LabSGA
+      IamInstanceProfile: !Ref LabInstanceProfileA
+      Tags:
+        - Key: Name
+          Value: brokenlabs-vpc-lab-08-instance-a
+      UserData:
+        Fn::Base64: |
+          #!/bin/bash
+          mkdir -p /var/www/html
+          cat > /var/www/html/index.html << 'HTMLEOF'
+          <!DOCTYPE html>
+          <html lang="en">
+          <head>
+            <meta charset="UTF-8" />
+            <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+            <title>AWS Broken Labs</title>
+            <style>
+              * { box-sizing: border-box; margin: 0; padding: 0; }
+              body {
+                font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+                background: linear-gradient(to bottom, #1976D2, #1565C0);
+                color: #e8eaed;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                min-height: 100vh;
+              }
+              .container { text-align: center; padding: 2rem; }
+              .logo {
+                font-size: 0.85rem;
+                font-weight: 600;
+                letter-spacing: 0.2em;
+                text-transform: uppercase;
+                color: #ff9900;
+                margin-bottom: 1rem;
+              }
+              h1 { font-size: 2.5rem; font-weight: 700; color: #ffffff; margin-bottom: 0.5rem; }
+              h2 { font-size: 1.2rem; font-weight: 400; color: #9aa0a6; }
+              .badge {
+                display: inline-block;
+                margin-top: 2rem;
+                padding: 0.4rem 1rem;
+                border: 1px solid #ff9900;
+                border-radius: 4px;
+                font-size: 0.8rem;
+                color: #ff9900;
+                letter-spacing: 0.1em;
+              }
+              .site-link {
+                display: block;
+                margin-top: 1rem;
+                font-size: 0.8rem;
+                color: #ff9900;
+                text-decoration: none;
+                letter-spacing: 0.05em;
+              }
+              .site-link:hover { text-decoration: underline; }
+            </style>
+          </head>
+          <body>
+            <div class="container">
+              <h2 class="logo">AWS Cloud Path Academy</h2>
+              <h1>AWS Broken Labs</h1>
+              <h2>If you can read this, the lab is fixed.</h2>
+              <div class="badge">VPC Lab 08 &mdash; VPC Peering</div>
+              <a class="site-link" href="https://www.cloudpathacademy.com">www.cloudpathacademy.com</a>
+            </div>
+          </body>
+          </html>
+          HTMLEOF
+          cat > /etc/systemd/system/lab-web.service << 'EOF'
+          [Unit]
+          Description=Lab Web Server
+
+          [Service]
+          ExecStart=/usr/bin/python3 -m http.server 80 --directory /var/www/html
+          Restart=always
+
+          [Install]
+          WantedBy=multi-user.target
+          EOF
+          systemctl enable lab-web
+          systemctl start lab-web
+
+  # --- VPC B (10.1.0.0/16) — client instance ---
+
+  LabVPCB:
+    Type: AWS::EC2::VPC
+    Properties:
+      CidrBlock: 10.1.0.0/16
+      EnableDnsSupport: true
+      EnableDnsHostnames: true
+      Tags:
+        - Key: Name
+          Value: brokenlabs-vpc-lab-08-vpc-b
+
+  LabSubnetB:
+    Type: AWS::EC2::Subnet
+    Properties:
+      VpcId: !Ref LabVPCB
+      CidrBlock: 10.1.1.0/24
+      AvailabilityZone: !Select [0, !GetAZs '']
+      MapPublicIpOnLaunch: true
+      Tags:
+        - Key: Name
+          Value: brokenlabs-vpc-lab-08-subnet-b
+
+  LabIGWB:
+    Type: AWS::EC2::InternetGateway
+    Properties:
+      Tags:
+        - Key: Name
+          Value: brokenlabs-vpc-lab-08-igw-b
+
+  LabIGWAttachB:
+    Type: AWS::EC2::VPCGatewayAttachment
+    Properties:
+      VpcId: !Ref LabVPCB
+      InternetGatewayId: !Ref LabIGWB
+
+  LabRouteTableB:
+    Type: AWS::EC2::RouteTable
+    Properties:
+      VpcId: !Ref LabVPCB
+      Tags:
+        - Key: Name
+          Value: brokenlabs-vpc-lab-08-rt-b
+
+  LabRouteBInternet:
+    Type: AWS::EC2::Route
+    DependsOn: LabIGWAttachB
+    Properties:
+      RouteTableId: !Ref LabRouteTableB
+      DestinationCidrBlock: 0.0.0.0/0
+      GatewayId: !Ref LabIGWB
+
+  LabSNAssocB:
+    Type: AWS::EC2::SubnetRouteTableAssociation
+    Properties:
+      SubnetId: !Ref LabSubnetB
+      RouteTableId: !Ref LabRouteTableB
+
+  LabSGB:
+    Type: AWS::EC2::SecurityGroup
+    Properties:
+      GroupDescription: Broken Labs VPC Lab 08 instance B security group
+      VpcId: !Ref LabVPCB
+      Tags:
+        - Key: Name
+          Value: brokenlabs-vpc-lab-08-sg-b
+
+  LabIAMRoleB:
+    Type: AWS::IAM::Role
+    Properties:
+      RoleName: brokenlabs-vpc-lab-08-role-b
+      AssumeRolePolicyDocument:
+        Version: "2012-10-17"
+        Statement:
+          - Effect: Allow
+            Principal:
+              Service: ec2.amazonaws.com
+            Action: sts:AssumeRole
+      ManagedPolicyArns:
+        - arn:aws:iam::aws:policy/AmazonSSMManagedInstanceCore
+
+  LabInstanceProfileB:
+    Type: AWS::IAM::InstanceProfile
+    Properties:
+      InstanceProfileName: brokenlabs-vpc-lab-08-profile-b
+      Roles:
+        - !Ref LabIAMRoleB
+
+  LabInstanceB:
+    Type: AWS::EC2::Instance
+    Properties:
+      InstanceType: t2.micro
+      ImageId: "{{resolve:ssm:/aws/service/ami-amazon-linux-latest/al2023-ami-kernel-default-x86_64}}"
+      SubnetId: !Ref LabSubnetB
+      SecurityGroupIds:
+        - !Ref LabSGB
+      IamInstanceProfile: !Ref LabInstanceProfileB
+      Tags:
+        - Key: Name
+          Value: brokenlabs-vpc-lab-08-instance-b
+
+  # --- VPC Peering Connection ---
+
+  LabPeeringConnection:
+    Type: AWS::EC2::VPCPeeringConnection
+    Properties:
+      VpcId: !Ref LabVPCA
+      PeerVpcId: !Ref LabVPCB
+      Tags:
+        - Key: Name
+          Value: brokenlabs-vpc-lab-08-peering
+
+Outputs:
+
+  InstanceAPrivateIP:
+    Description: Private IP of the web server in VPC A — use this as the curl target
+    Value: !GetAtt LabInstanceA.PrivateIp
+
+  InstanceBId:
+    Description: EC2 Instance ID of the client in VPC B — use this to connect via Session Manager
+    Value: !Ref LabInstanceB

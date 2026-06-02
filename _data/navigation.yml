@@ -178,3 +178,28 @@
           url: /docs/aws/labs/s3/lab-05-permissions
         - title: "Lab 06 — Replication"
           url: /docs/aws/labs/s3/lab-06-replication
+    - title: VPC Troubleshooting
+      url: /docs/aws/labs/vpc
+      items:
+        - title: "<span style='color: red;'>START HERE</span>"
+          url: /docs/aws/labs/vpc
+        - title: "Lab 01 — IGW Routing"
+          url: /docs/aws/labs/vpc/lab-01-igw-routing
+        - title: "Lab 02 — Network ACLs"
+          url: /docs/aws/labs/vpc/lab-02-nacl
+        - title: "Lab 03 — Security Groups"
+          url: /docs/aws/labs/vpc/lab-03-sg
+        - title: "Lab 04 — RT Association"
+          url: /docs/aws/labs/vpc/lab-04-rt-assoc
+        - title: "Lab 05 — VPC Settings"
+          url: /docs/aws/labs/vpc/lab-05-vpc-settings
+        - title: "Lab 06 — Private Subnets"
+          url: /docs/aws/labs/vpc/lab-06-private-subnet
+        - title: "Lab 07 — NAT Gateway"
+          url: /docs/aws/labs/vpc/lab-07-nat-gateway
+        - title: "Lab 08 — VPC Peering"
+          url: /docs/aws/labs/vpc/lab-08-vpc-peering
+        - title: "Lab 09 — VPC Endpoints"
+          url: /docs/aws/labs/vpc/lab-09-vpc-endpoint
+        - title: "Lab 10 — Network ACLs"
+          url: /docs/aws/labs/vpc/lab-10-nacl

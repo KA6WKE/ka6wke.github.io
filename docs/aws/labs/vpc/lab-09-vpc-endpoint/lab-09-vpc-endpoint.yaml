@@ -1,0 +1,209 @@
+AWSTemplateFormatVersion: "2010-09-09"
+Description: >
+  Broken Labs - VPC Lab 09.
+  A VPC Gateway Endpoint for S3 exists but is associated with the wrong route table.
+  A private instance cannot reach S3.
+  Licensed under CC BY-NC-SA 4.0: https://creativecommons.org/licenses/by-nc-sa/4.0/
+  Developed by: Mark Schoonover <mark.schoonover@gmail.com>
+
+Resources:
+
+  LabVPC:
+    Type: AWS::EC2::VPC
+    Properties:
+      CidrBlock: 10.0.0.0/16
+      EnableDnsSupport: true
+      EnableDnsHostnames: true
+      Tags:
+        - Key: Name
+          Value: brokenlabs-vpc-lab-09-vpc
+
+  LabPublicSubnet:
+    Type: AWS::EC2::Subnet
+    Properties:
+      VpcId: !Ref LabVPC
+      CidrBlock: 10.0.1.0/24
+      AvailabilityZone: !Select [0, !GetAZs '']
+      MapPublicIpOnLaunch: true
+      Tags:
+        - Key: Name
+          Value: brokenlabs-vpc-lab-09-public-subnet
+
+  LabPrivateSubnet:
+    Type: AWS::EC2::Subnet
+    Properties:
+      VpcId: !Ref LabVPC
+      CidrBlock: 10.0.2.0/24
+      AvailabilityZone: !Select [0, !GetAZs '']
+      MapPublicIpOnLaunch: false
+      Tags:
+        - Key: Name
+          Value: brokenlabs-vpc-lab-09-private-subnet
+
+  LabIGW:
+    Type: AWS::EC2::InternetGateway
+    Properties:
+      Tags:
+        - Key: Name
+          Value: brokenlabs-vpc-lab-09-igw
+
+  LabIGWAttach:
+    Type: AWS::EC2::VPCGatewayAttachment
+    Properties:
+      VpcId: !Ref LabVPC
+      InternetGatewayId: !Ref LabIGW
+
+  LabPublicRouteTable:
+    Type: AWS::EC2::RouteTable
+    Properties:
+      VpcId: !Ref LabVPC
+      Tags:
+        - Key: Name
+          Value: brokenlabs-vpc-lab-09-public-rt
+
+  LabPublicRoute:
+    Type: AWS::EC2::Route
+    DependsOn: LabIGWAttach
+    Properties:
+      RouteTableId: !Ref LabPublicRouteTable
+      DestinationCidrBlock: 0.0.0.0/0
+      GatewayId: !Ref LabIGW
+
+  LabPublicSNAssoc:
+    Type: AWS::EC2::SubnetRouteTableAssociation
+    Properties:
+      SubnetId: !Ref LabPublicSubnet
+      RouteTableId: !Ref LabPublicRouteTable
+
+  LabPrivateRouteTable:
+    Type: AWS::EC2::RouteTable
+    Properties:
+      VpcId: !Ref LabVPC
+      Tags:
+        - Key: Name
+          Value: brokenlabs-vpc-lab-09-private-rt
+
+  LabPrivateSNAssoc:
+    Type: AWS::EC2::SubnetRouteTableAssociation
+    Properties:
+      SubnetId: !Ref LabPrivateSubnet
+      RouteTableId: !Ref LabPrivateRouteTable
+
+  LabEndpointSG:
+    Type: AWS::EC2::SecurityGroup
+    Properties:
+      GroupDescription: Allow HTTPS from VPC for SSM interface endpoints
+      VpcId: !Ref LabVPC
+      SecurityGroupIngress:
+        - IpProtocol: tcp
+          FromPort: 443
+          ToPort: 443
+          CidrIp: 10.0.0.0/16
+      Tags:
+        - Key: Name
+          Value: brokenlabs-vpc-lab-09-endpoint-sg
+
+  LabInstanceSG:
+    Type: AWS::EC2::SecurityGroup
+    Properties:
+      GroupDescription: Broken Labs VPC Lab 09 instance security group
+      VpcId: !Ref LabVPC
+      Tags:
+        - Key: Name
+          Value: brokenlabs-vpc-lab-09-sg
+
+  LabSSMEndpoint:
+    Type: AWS::EC2::VPCEndpoint
+    Properties:
+      VpcId: !Ref LabVPC
+      ServiceName: !Sub "com.amazonaws.${AWS::Region}.ssm"
+      VpcEndpointType: Interface
+      SubnetIds:
+        - !Ref LabPrivateSubnet
+      SecurityGroupIds:
+        - !Ref LabEndpointSG
+      PrivateDnsEnabled: true
+
+  LabSSMMessagesEndpoint:
+    Type: AWS::EC2::VPCEndpoint
+    Properties:
+      VpcId: !Ref LabVPC
+      ServiceName: !Sub "com.amazonaws.${AWS::Region}.ssmmessages"
+      VpcEndpointType: Interface
+      SubnetIds:
+        - !Ref LabPrivateSubnet
+      SecurityGroupIds:
+        - !Ref LabEndpointSG
+      PrivateDnsEnabled: true
+
+  LabEC2MessagesEndpoint:
+    Type: AWS::EC2::VPCEndpoint
+    Properties:
+      VpcId: !Ref LabVPC
+      ServiceName: !Sub "com.amazonaws.${AWS::Region}.ec2messages"
+      VpcEndpointType: Interface
+      SubnetIds:
+        - !Ref LabPrivateSubnet
+      SecurityGroupIds:
+        - !Ref LabEndpointSG
+      PrivateDnsEnabled: true
+
+  LabS3Endpoint:
+    Type: AWS::EC2::VPCEndpoint
+    Properties:
+      VpcId: !Ref LabVPC
+      ServiceName: !Sub "com.amazonaws.${AWS::Region}.s3"
+      VpcEndpointType: Gateway
+      RouteTableIds:
+        - !Ref LabPublicRouteTable  # THE BREAK: should be LabPrivateRouteTable
+      Tags:
+        - Key: Name
+          Value: brokenlabs-vpc-lab-09-s3-endpoint
+
+  LabIAMRole:
+    Type: AWS::IAM::Role
+    Properties:
+      RoleName: brokenlabs-vpc-lab-09-role
+      AssumeRolePolicyDocument:
+        Version: "2012-10-17"
+        Statement:
+          - Effect: Allow
+            Principal:
+              Service: ec2.amazonaws.com
+            Action: sts:AssumeRole
+      ManagedPolicyArns:
+        - arn:aws:iam::aws:policy/AmazonSSMManagedInstanceCore
+
+  LabInstanceProfile:
+    Type: AWS::IAM::InstanceProfile
+    Properties:
+      InstanceProfileName: brokenlabs-vpc-lab-09-profile
+      Roles:
+        - !Ref LabIAMRole
+
+  LabInstance:
+    Type: AWS::EC2::Instance
+    Properties:
+      InstanceType: t2.micro
+      ImageId: "{{resolve:ssm:/aws/service/ami-amazon-linux-latest/al2023-ami-kernel-default-x86_64}}"
+      SubnetId: !Ref LabPrivateSubnet
+      SecurityGroupIds:
+        - !Ref LabInstanceSG
+      IamInstanceProfile: !Ref LabInstanceProfile
+      Tags:
+        - Key: Name
+          Value: brokenlabs-vpc-lab-09
+
+Outputs:
+
+  InstanceId:
+    Description: EC2 Instance ID — use this to connect via Session Manager
+    Value: !Ref LabInstance
+
+  PrivateIP:
+    Description: Private IP address of the instance
+    Value: !GetAtt LabInstance.PrivateIp
+
+  S3TestURL:
+    Description: Regional S3 endpoint URL — use this to test S3 connectivity from the instance
+    Value: !Sub "https://s3.${AWS::Region}.amazonaws.com"
