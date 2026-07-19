@@ -36,21 +36,35 @@
     <!-- NAVIGATION -->
     <div id="nav_wrap" class="outer">
       <nav class="inner site-nav">
-        <ul class="nav-menu">
+        <button type="button" id="nav-toggle" class="nav-toggle" aria-expanded="false" aria-controls="primary-nav-menu" aria-label="Toggle navigation menu">
+          <span class="nav-toggle-bar"></span>
+          <span class="nav-toggle-bar"></span>
+          <span class="nav-toggle-bar"></span>
+        </button>
+        <ul class="nav-menu" id="primary-nav-menu">
           {% for item in site.data.navigation %}
           <li class="nav-item{% if item.items %} has-dropdown{% endif %}">
-            <a href="{{ item.url | default: '#' }}"{% if item.target %} target="{{ item.target }}"{% endif %}>{{ item.title }}{% if item.items %} &#9660;{% endif %}</a>
+            <a href="{{ item.url | default: '#' }}"{% if item.target %} target="{{ item.target }}"{% endif %}>{{ item.title }}</a>
             {% if item.items %}
+            <button type="button" class="dropdown-toggle" aria-expanded="false" aria-label="Toggle {{ item.title }} submenu">
+              <span class="dropdown-arrow">&#9660;</span>
+            </button>
             <ul class="dropdown">
               {% for subitem in item.items %}
               <li class="nav-item{% if subitem.items %} has-dropdown{% endif %}">
-                <a href="{{ subitem.url | default: '#' }}"{% if subitem.target %} target="{{ subitem.target }}"{% endif %}>{{ subitem.title }}{% if subitem.items %} &#9658;{% endif %}</a>
+                <a href="{{ subitem.url | default: '#' }}"{% if subitem.target %} target="{{ subitem.target }}"{% endif %}>{{ subitem.title }}</a>
                 {% if subitem.items %}
+                <button type="button" class="dropdown-toggle" aria-expanded="false" aria-label="Toggle {{ subitem.title }} submenu">
+                  <span class="dropdown-arrow">&#9658;</span>
+                </button>
                 <ul class="dropdown fly-out">
                   {% for leaf in subitem.items %}
                   <li class="nav-item{% if leaf.items %} has-dropdown{% endif %}">
-                    <a href="{{ leaf.url | default: '#' }}"{% if leaf.target %} target="{{ leaf.target }}"{% endif %}>{{ leaf.title }}{% if leaf.items %} &#9658;{% endif %}</a>
+                    <a href="{{ leaf.url | default: '#' }}"{% if leaf.target %} target="{{ leaf.target }}"{% endif %}>{{ leaf.title }}</a>
                     {% if leaf.items %}
+                    <button type="button" class="dropdown-toggle" aria-expanded="false" aria-label="Toggle {{ leaf.title }} submenu">
+                      <span class="dropdown-arrow">&#9658;</span>
+                    </button>
                     <ul class="dropdown fly-out">
                       {% for subleaf in leaf.items %}
                       <li class="nav-item">
@@ -134,6 +148,13 @@
         var nav = document.getElementById('nav_wrap');
         var main = document.getElementById('main_content_wrap');
         var navOffsetTop = nav.offsetTop;
+        var navCollapsedHeight = nav.offsetHeight;
+
+        window.addEventListener('resize', function () {
+          if (!nav.classList.contains('nav-open')) {
+            navCollapsedHeight = nav.offsetHeight;
+          }
+        });
 
         function onScroll() {
           var scrollY = window.scrollY;
@@ -142,7 +163,7 @@
           if (scrollY >= navOffsetTop) {
             if (!nav.classList.contains('nav-sticky')) {
               nav.classList.add('nav-sticky');
-              main.style.paddingTop = nav.offsetHeight + 'px';
+              main.style.paddingTop = navCollapsedHeight + 'px';
             }
           } else {
             nav.classList.remove('nav-sticky');
@@ -161,6 +182,79 @@
 
         btn.addEventListener('click', function () {
           window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+      })();
+    </script>
+
+    <script>
+      (function () {
+        var navWrap = document.getElementById('nav_wrap');
+        var navToggle = document.getElementById('nav-toggle');
+        var navMenu = document.getElementById('primary-nav-menu');
+        var mobileQuery = window.matchMedia('(max-width: 768px)');
+
+        function closeAllSubmenus() {
+          navMenu.querySelectorAll('.nav-item.open').forEach(function (li) {
+            li.classList.remove('open');
+          });
+          navMenu.querySelectorAll('.dropdown-toggle[aria-expanded="true"]').forEach(function (toggle) {
+            toggle.setAttribute('aria-expanded', 'false');
+          });
+        }
+
+        function closeMobileMenu() {
+          navWrap.classList.remove('nav-open');
+          navToggle.setAttribute('aria-expanded', 'false');
+          closeAllSubmenus();
+        }
+
+        navToggle.addEventListener('click', function () {
+          var isOpen = navWrap.classList.toggle('nav-open');
+          navToggle.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+          if (!isOpen) closeAllSubmenus();
+        });
+
+        navMenu.querySelectorAll('.dropdown-toggle').forEach(function (toggle) {
+          toggle.addEventListener('click', function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+            var li = toggle.closest('.nav-item');
+            var isOpen = li.classList.toggle('open');
+            toggle.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+          });
+        });
+
+        navMenu.querySelectorAll('.has-dropdown > a[href="#"]').forEach(function (a) {
+          a.addEventListener('click', function (e) {
+            if (mobileQuery.matches) {
+              e.preventDefault();
+              var toggle = a.nextElementSibling;
+              if (toggle) toggle.click();
+            }
+          });
+        });
+
+        navMenu.querySelectorAll('a:not([href="#"])').forEach(function (a) {
+          a.addEventListener('click', function () {
+            if (mobileQuery.matches) closeMobileMenu();
+          });
+        });
+
+        document.addEventListener('click', function (e) {
+          if (navWrap.classList.contains('nav-open') && !navWrap.contains(e.target)) {
+            closeMobileMenu();
+          }
+        });
+
+        document.addEventListener('keydown', function (e) {
+          if (e.key === 'Escape' && navWrap.classList.contains('nav-open')) {
+            closeMobileMenu();
+            navToggle.focus();
+          }
+        });
+
+        mobileQuery.addEventListener('change', function (e) {
+          if (!e.matches) closeMobileMenu();
         });
       })();
     </script>
