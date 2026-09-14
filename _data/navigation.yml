@@ -203,3 +203,20 @@
           url: /docs/aws/labs/vpc/lab-09-vpc-endpoint
         - title: "Lab 10 — Network ACLs"
           url: /docs/aws/labs/vpc/lab-10-nacl
+    - title: IAM Troubleshooting
+      url: /docs/aws/labs/iam
+      items:
+        - title: "<span style='color: red;'>START HERE</span>"
+          url: /docs/aws/labs/iam
+        - title: "Lab 01 — S3 Read Access"
+          url: /docs/aws/labs/iam/lab-01-s3-read-denied
+        - title: "Lab 02 — Policy Update"
+          url: /docs/aws/labs/iam/lab-02-role-access-denied
+        - title: "Lab 03 — Object-Level Access"
+          url: /docs/aws/labs/iam/lab-03-object-access-denied
+        - title: "Lab 04 — Unexpected Denial"
+          url: /docs/aws/labs/iam/lab-04-unexpected-access-denied
+        - title: "Lab 05 — Expiring Access"
+          url: /docs/aws/labs/iam/lab-05-access-stopped-working
+        - title: "Lab 06 — PassRole to Lambda"
+          url: /docs/aws/labs/iam/lab-06-lambda-role-denied
