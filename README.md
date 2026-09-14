@@ -51,6 +51,21 @@ Every study guide is built around the official AWS exam domain structure with di
 
 ---
 
+## AWS Broken Labs
+
+Hands-on troubleshooting labs that complement the study guides: each lab deploys a realistic but broken AWS environment via CloudFormation, and you diagnose and fix the root cause using the AWS Console — the same way you would in a production environment. Every lab includes progressive hints and a full solution walkthrough.
+
+| Module | Labs |
+|---|---|
+| EC2 Troubleshooting | 6 |
+| IAM Troubleshooting | 6 |
+| S3 Troubleshooting | 6 |
+| VPC Troubleshooting | 10 |
+
+**Total Labs** — 28
+
+---
+
 ## Study Guide Statistics
 
 - **Total Domain Guides** — 55 across 12 AWS certifications
@@ -79,6 +94,7 @@ ka6wke.github.io/
 │       ├── clf-c02/    # Cloud Practitioner
 │       ├── dop-c02/    # DevOps Engineer Professional
 │       ├── dva-c02/    # Developer Associate
+│       ├── labs/       # AWS Broken Labs (ec2, iam, s3, vpc)
 │       ├── mla-c01/    # ML Engineer Associate
 │       ├── mls-c01/    # Machine Learning Specialty
 │       ├── saa-c03/    # Solutions Architect Associate
