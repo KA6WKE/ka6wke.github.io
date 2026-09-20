@@ -1,4 +1,4 @@
-# EC2 Labs
+# Amazon EC2 Labs
 
 Hands-on troubleshooting labs for Amazon EC2.
 
@@ -16,14 +16,25 @@ the root cause, and apply the fix — the same way you would in a production env
 
 ## Labs
 
+### Beginner
+
 | # | Lab | Level | Difficulty |
 | --- | --- | --- | --- |
 | 01 | [EC2 Lab 01](lab-01-http-blocked/) | Associate | Beginner |
 | 02 | [EC2 Lab 02](lab-02-instance-connect/) | Associate | Beginner |
 | 03 | [EC2 Lab 03](lab-03-no-public-ip/) | Associate | Beginner |
 | 04 | [EC2 Lab 04](lab-04-no-iam-role/) | Associate | Beginner |
+
+### Intermediate
+
+| # | Lab | Level | Difficulty |
+| --- | --- | --- | --- |
 | 05 | [EC2 Lab 05](lab-05-missing-ssm-policy/) | Associate | Intermediate |
 | 06 | [EC2 Lab 06](lab-06-user-data/) | Associate | Intermediate |
+
+### Advanced
+
+Advanced labs coming soon.
 
 ---
 

@@ -1,9 +1,9 @@
 ---
 layout: default
-title: "AWS Broken Labs - S3 Troubleshooting"
+title: "AWS Broken Labs - Amazon S3"
 ---
 
-# S3 Labs
+# Amazon S3 Labs
 
 Hands-on troubleshooting labs for Amazon S3.
 
@@ -22,6 +22,8 @@ in a production environment.
 
 ## Labs
 
+### Beginner
+
 | # | Lab | Level | Difficulty |
 | --- | --- | --- | --- |
 | 01 | [Lab 01 — Access](lab-01-s3-access/) | Associate | Beginner |
@@ -29,7 +31,16 @@ in a production environment.
 | 03 | [Lab 03 — Recovery](lab-03-versioning/) | Associate | Beginner |
 | 04 | [Lab 04 — Sharing](lab-04-presigned-url/) | Associate | Beginner |
 | 05 | [Lab 05 — Permissions](lab-05-permissions/) | Associate | Beginner |
+
+### Intermediate
+
+| # | Lab | Level | Difficulty |
+| --- | --- | --- | --- |
 | 06 | [Lab 06 — Replication](lab-06-replication/) | Associate | Intermediate |
+
+### Advanced
+
+Advanced labs coming soon.
 
 ---
 

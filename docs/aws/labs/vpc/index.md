@@ -1,9 +1,9 @@
 ---
 layout: default
-title: "AWS Broken Labs - VPC Troubleshooting"
+title: "AWS Broken Labs - Amazon VPC"
 ---
 
-# VPC Labs
+# Amazon VPC Labs
 
 Hands-on troubleshooting labs for Amazon VPC.
 
@@ -22,6 +22,12 @@ root cause, and apply the fix — the same way you would in a production environ
 
 ## Labs
 
+### Beginner
+
+Beginner labs coming soon.
+
+### Intermediate
+
 | #   | Lab                                  | Topic                                  | Level        | Difficulty   |
 | --- | ------------------------------------ | -------------------------------------- | ------------ | ------------ |
 | 01  | [VPC Lab 01](lab-01-igw-routing/)    | VPC Route Tables and Internet Gateways | Associate    | Intermediate |
@@ -29,11 +35,16 @@ root cause, and apply the fix — the same way you would in a production environ
 | 03  | [VPC Lab 03](lab-03-sg/)             | Security Groups                        | Associate    | Intermediate |
 | 04  | [VPC Lab 04](lab-04-rt-assoc/)       | Route Table Associations               | Associate    | Intermediate |
 | 05  | [VPC Lab 05](lab-05-vpc-settings/)   | VPC Settings                           | Associate    | Intermediate |
-| 06  | [VPC Lab 06](lab-06-private-subnet/) | Private Subnets                        | Professional | Advanced     |
-| 07  | [VPC Lab 07](lab-07-nat-gateway/)    | NAT Gateways                           | Professional | Advanced     |
 | 08  | [VPC Lab 08](lab-08-vpc-peering/)    | VPC Peering                            | Associate    | Intermediate |
 | 09  | [VPC Lab 09](lab-09-vpc-endpoint/)   | VPC Endpoints                          | Associate    | Intermediate |
 | 10  | [VPC Lab 10](lab-10-nacl/)           | Network ACLs                           | Associate    | Intermediate |
+
+### Advanced
+
+| #   | Lab                                  | Topic                                  | Level        | Difficulty   |
+| --- | ------------------------------------ | -------------------------------------- | ------------ | ------------ |
+| 06  | [VPC Lab 06](lab-06-private-subnet/) | Private Subnets                        | Professional | Advanced     |
+| 07  | [VPC Lab 07](lab-07-nat-gateway/)    | NAT Gateways                           | Professional | Advanced     |
 
 ---
 
