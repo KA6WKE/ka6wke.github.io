@@ -1,0 +1,14 @@
+<ul class="dropdown{% if include.depth > 1 %} fly-out{% endif %}">
+  {% for entry in include.items %}
+  <li class="nav-item{% if entry.items %} has-dropdown{% endif %}">
+    <a href="{{ entry.url | default: '#' }}"{% if entry.target %} target="{{ entry.target }}"{% endif %}>{{ entry.title }}</a>
+    {% if entry.items %}
+    <button type="button" class="dropdown-toggle" aria-expanded="false" aria-label="Toggle {{ entry.title }} submenu">
+      <span class="dropdown-arrow">&#9658;</span>
+    </button>
+    {% assign next_depth = include.depth | plus: 1 %}
+    {% include nav-dropdown.html items=entry.items depth=next_depth %}
+    {% endif %}
+  </li>
+  {% endfor %}
+</ul>

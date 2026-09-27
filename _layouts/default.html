@@ -49,37 +49,7 @@
             <button type="button" class="dropdown-toggle" aria-expanded="false" aria-label="Toggle {{ item.title }} submenu">
               <span class="dropdown-arrow">&#9660;</span>
             </button>
-            <ul class="dropdown">
-              {% for subitem in item.items %}
-              <li class="nav-item{% if subitem.items %} has-dropdown{% endif %}">
-                <a href="{{ subitem.url | default: '#' }}"{% if subitem.target %} target="{{ subitem.target }}"{% endif %}>{{ subitem.title }}</a>
-                {% if subitem.items %}
-                <button type="button" class="dropdown-toggle" aria-expanded="false" aria-label="Toggle {{ subitem.title }} submenu">
-                  <span class="dropdown-arrow">&#9658;</span>
-                </button>
-                <ul class="dropdown fly-out">
-                  {% for leaf in subitem.items %}
-                  <li class="nav-item{% if leaf.items %} has-dropdown{% endif %}">
-                    <a href="{{ leaf.url | default: '#' }}"{% if leaf.target %} target="{{ leaf.target }}"{% endif %}>{{ leaf.title }}</a>
-                    {% if leaf.items %}
-                    <button type="button" class="dropdown-toggle" aria-expanded="false" aria-label="Toggle {{ leaf.title }} submenu">
-                      <span class="dropdown-arrow">&#9658;</span>
-                    </button>
-                    <ul class="dropdown fly-out">
-                      {% for subleaf in leaf.items %}
-                      <li class="nav-item">
-                        <a href="{{ subleaf.url | default: '#' }}"{% if subleaf.target %} target="{{ subleaf.target }}"{% endif %}>{{ subleaf.title }}</a>
-                      </li>
-                      {% endfor %}
-                    </ul>
-                    {% endif %}
-                  </li>
-                  {% endfor %}
-                </ul>
-                {% endif %}
-              </li>
-              {% endfor %}
-            </ul>
+            {% include nav-dropdown.html items=item.items depth=1 %}
             {% endif %}
           </li>
           {% endfor %}
