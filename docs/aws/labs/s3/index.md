@@ -26,11 +26,11 @@ in a production environment.
 
 | # | Lab | Level | Difficulty |
 | --- | --- | --- | --- |
-| 01 | [Lab 01 — Access](lab-01-s3-access/) | Associate | Beginner |
-| 02 | [Lab 02 — Endpoint](lab-02-endpoint/) | Associate | Beginner |
-| 03 | [Lab 03 — Recovery](lab-03-versioning/) | Associate | Beginner |
-| 04 | [Lab 04 — Sharing](lab-04-presigned-url/) | Associate | Beginner |
-| 05 | [Lab 05 — Permissions](lab-05-permissions/) | Associate | Beginner |
+| 01 | [Lab 01 — Website Access I](lab-01-website-access-i/) | Associate | Beginner |
+| 02 | [Lab 02 — Website Access II](lab-02-website-access-ii/) | Associate | Beginner |
+| 03 | [Lab 03 — Site Content](lab-03-site-content/) | Associate | Beginner |
+| 04 | [Lab 04 — Shared Link](lab-04-shared-link/) | Associate | Beginner |
+| 05 | [Lab 05 — Website Access III](lab-05-website-access-iii/) | Associate | Beginner |
 
 ### Intermediate
 
@@ -38,9 +38,9 @@ in a production environment.
 | --- | --- | --- | --- |
 | 06 | [Lab 06 — Replication](lab-06-replication/) | Associate | Intermediate |
 
-### Advanced
+### Expert
 
-Advanced labs coming soon.
+Expert labs coming soon.
 
 ---
 

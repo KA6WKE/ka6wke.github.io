@@ -1,0 +1,51 @@
+AWSTemplateFormatVersion: "2010-09-09"
+Description: >
+  Broken Labs - IAM Lab 05.
+  A contractor was granted temporary read access to an S3 bucket, but access has stopped working.
+  Licensed under CC BY-NC-SA 4.0: https://creativecommons.org/licenses/by-nc-sa/4.0/
+  Developed by: Mark Schoonover <mark.schoonover@gmail.com>
+
+Resources:
+
+  LabBucket:
+    Type: AWS::S3::Bucket
+    Properties:
+      BucketName: !Sub "brokenlabs-iam-lab-05-${AWS::Region}-${AWS::AccountId}"
+
+  LabRole:
+    Type: AWS::IAM::Role
+    Properties:
+      RoleName: !Sub "brokenlabs-iam-lab-05-role-${AWS::Region}-${AWS::AccountId}"
+      AssumeRolePolicyDocument:
+        Version: "2012-10-17"
+        Statement:
+          - Effect: Allow
+            Principal:
+              Service: ec2.amazonaws.com
+            Action: sts:AssumeRole
+      Policies:
+        - PolicyName: LabRolePolicy
+          PolicyDocument:
+            Version: "2012-10-17"
+            Statement:
+              - Sid: AllowGetObjectUntilProjectEnds
+                Effect: Allow
+                Action: s3:GetObject
+                Resource: !Sub "${LabBucket.Arn}/*"
+                Condition:
+                  DateLessThan:
+                    aws:CurrentTime: "2020-01-01T00:00:00Z"
+
+Outputs:
+
+  RoleName:
+    Description: Name of the IAM role to test in the Policy Simulator
+    Value: !Ref LabRole
+
+  TestResourceArn:
+    Description: Resource ARN to simulate s3:GetObject against
+    Value: !Sub "${LabBucket.Arn}/*"
+
+  BucketName:
+    Description: Name of the S3 bucket
+    Value: !Ref LabBucket

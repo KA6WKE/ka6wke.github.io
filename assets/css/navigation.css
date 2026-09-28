@@ -316,9 +316,9 @@
 
 .footer-columns {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: 8px 24px;
-  align-items: center;
+  align-items: start;
 }
 
 .footer-col {
@@ -330,13 +330,38 @@
   text-align: left;
 }
 
-.footer-columns > p {
-  margin: 0;
-  text-align: left;
+/* Same height for every footer line so top-aligned columns share rows */
+.footer-col p {
+  margin: 0 0 8px;
+  line-height: 32px;
 }
 
-.footer-span {
-  grid-column: 1 / span 2;
+.footer-col p:last-child {
+  margin-bottom: 0;
+}
+
+/* Keep the license badge (31px) inside the 32px line */
+.footer-col p img {
+  vertical-align: top !important;
+}
+
+.footer-columns > p {
+  margin: 0;
+  line-height: 32px;
+  text-align: left;
+  white-space: nowrap;
+}
+
+/* Narrow screens: text wraps, so drop the fixed line height */
+@media (max-width: 480px) {
+  .footer-col p,
+  .footer-columns > p {
+    line-height: 1.5;
+  }
+
+  .footer-columns > p {
+    white-space: normal;
+  }
 }
 
 /* ============================================================

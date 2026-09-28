@@ -1,0 +1,55 @@
+AWSTemplateFormatVersion: "2010-09-09"
+Description: >
+  Broken Labs - IAM Lab 01.
+  An application role needs to read objects from an S3 bucket, but its requests are denied.
+  Licensed under CC BY-NC-SA 4.0: https://creativecommons.org/licenses/by-nc-sa/4.0/
+  Developed by: Mark Schoonover <mark.schoonover@gmail.com>
+
+Resources:
+
+  LabBucket:
+    Type: AWS::S3::Bucket
+    Properties:
+      BucketName: !Sub "brokenlabs-iam-lab-01-${AWS::Region}-${AWS::AccountId}"
+
+  LabRole:
+    Type: AWS::IAM::Role
+    Properties:
+      RoleName: !Sub "brokenlabs-iam-lab-01-role-${AWS::Region}-${AWS::AccountId}"
+      AssumeRolePolicyDocument:
+        Version: "2012-10-17"
+        Statement:
+          - Effect: Allow
+            Principal:
+              Service: ec2.amazonaws.com
+            Action: sts:AssumeRole
+      Policies:
+        - PolicyName: LabRolePolicy
+          PolicyDocument:
+            Version: "2012-10-17"
+            Statement:
+              - Sid: AllowBucketRead
+                Effect: Allow
+                Action:
+                  - s3:ListBucket
+                Resource:
+                  - !GetAtt LabBucket.Arn
+                  - !Sub "${LabBucket.Arn}/*"
+
+Outputs:
+
+  RoleName:
+    Description: Name of the IAM role to test in the Policy Simulator
+    Value: !Ref LabRole
+
+  BucketResourceArn:
+    Description: ARN of the S3 bucket
+    Value: !GetAtt LabBucket.Arn
+
+  ObjectResourceArn:
+    Description: ARN pattern for objects in the S3 bucket
+    Value: !Sub "${LabBucket.Arn}/*"
+
+  BucketName:
+    Description: Name of the S3 bucket
+    Value: !Ref LabBucket

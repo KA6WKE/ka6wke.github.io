@@ -1,3 +1,8 @@
+---
+layout: default
+title: "AWS Broken Labs - Amazon EC2"
+---
+
 # Amazon EC2 Labs
 
 Hands-on troubleshooting labs for Amazon EC2.
@@ -20,21 +25,21 @@ the root cause, and apply the fix — the same way you would in a production env
 
 | # | Lab | Level | Difficulty |
 | --- | --- | --- | --- |
-| 01 | [EC2 Lab 01](lab-01-http-blocked/) | Associate | Beginner |
-| 02 | [EC2 Lab 02](lab-02-instance-connect/) | Associate | Beginner |
-| 03 | [EC2 Lab 03](lab-03-no-public-ip/) | Associate | Beginner |
-| 04 | [EC2 Lab 04](lab-04-no-iam-role/) | Associate | Beginner |
+| 01 | [Lab 01 — Web Access I](lab-01-web-access-i/) | Associate | Beginner |
+| 02 | [Lab 02 — Instance Access I](lab-02-instance-access-i/) | Associate | Beginner |
+| 03 | [Lab 03 — Web Access II](lab-03-web-access-ii/) | Associate | Beginner |
+| 04 | [Lab 04 — Instance Access II](lab-04-instance-access-ii/) | Associate | Beginner |
 
 ### Intermediate
 
 | # | Lab | Level | Difficulty |
 | --- | --- | --- | --- |
-| 05 | [EC2 Lab 05](lab-05-missing-ssm-policy/) | Associate | Intermediate |
-| 06 | [EC2 Lab 06](lab-06-user-data/) | Associate | Intermediate |
+| 05 | [Lab 05 — Instance Access III](lab-05-instance-access-iii/) | Associate | Intermediate |
+| 06 | [Lab 06 — Web Access III](lab-06-web-access-iii/) | Associate | Intermediate |
 
-### Advanced
+### Expert
 
-Advanced labs coming soon.
+Expert labs coming soon.
 
 ---
 
@@ -49,7 +54,7 @@ Advanced labs coming soon.
 
 All labs use a **t2.micro** instance (Free Tier eligible — 750 hours/month for the first
 12 months). If you are outside the Free Tier, each lab costs approximately **$0.30/day**
-if left running. Lab 03 may incur an additional charge — see the lab README for details.
+if left running. Lab 03 may incur an additional charge — see the lab page for details.
 
 **Delete each stack promptly when you are done.**
 
@@ -63,4 +68,4 @@ After completing a lab, delete the CloudFormation stack to avoid ongoing charges
 2. Select your stack and click **Delete**
 
 Some labs require additional cleanup steps before deleting the stack. Check the
-**Cleanup** section in each lab's README for details.
+**Cleanup** section on each lab page for details.

@@ -1,8 +1,7 @@
 AWSTemplateFormatVersion: "2010-09-09"
 Description: >
   Broken Labs - S3 Lab 06.
-  A replication rule is configured between two buckets, but objects are not
-  appearing in the destination.
+  Objects uploaded to a source bucket are not appearing in the destination bucket.
   Licensed under CC BY-NC-SA 4.0: https://creativecommons.org/licenses/by-nc-sa/4.0/
   Developed by: Mark Schoonover <mark.schoonover@gmail.com>
 

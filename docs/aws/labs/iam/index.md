@@ -11,13 +11,12 @@ Hands-on troubleshooting labs for AWS Identity and Access Management (IAM).
 
 AWS IAM controls who can do what in your account, and IAM misconfigurations are
 responsible for some of the most common — and most confusing — access issues in real
-AWS environments. A missing action, a stray `Deny` statement, a mismatched resource
-ARN, or a permissions boundary that's out of sync with a role's policy can all produce
-the same symptom: **AccessDenied**, with no obvious clue as to why.
+AWS environments. Many different mistakes produce the same symptom: **AccessDenied**,
+with no obvious clue as to why.
 
 These labs give you that troubleshooting experience without deploying any running
 compute. Each lab deploys a realistic but broken IAM configuration using
-CloudFormation. Instead of reproducing the break against live infrastructure, you use
+CloudFormation. Instead of reproducing the problem against live infrastructure, you use
 the **IAM Policy Simulator** to test the exact action and resource in question, see
 the denial, diagnose the root cause, and confirm your fix — the same way you would
 investigate an access issue in a production account.
@@ -28,24 +27,24 @@ investigate an access issue in a production account.
 
 ### Beginner
 
-| # | Lab | Topic | Level | Difficulty |
-| --- | --- | --- | --- | --- |
-| 01 | [IAM Lab 01](lab-01-s3-read-denied/) | Missing action in an identity policy | Associate | Beginner |
-| 02 | [IAM Lab 02](lab-02-role-access-denied/) | Explicit Deny vs. Allow | Associate | Beginner |
+| # | Lab | Level | Difficulty |
+| --- | --- | --- | --- |
+| 01 | [Lab 01 — Access Denied I](lab-01-access-denied-i/) | Associate | Beginner |
+| 02 | [Lab 02 — Access Denied II](lab-02-access-denied-ii/) | Associate | Beginner |
 
 ### Intermediate
 
-| # | Lab | Topic | Level | Difficulty |
-| --- | --- | --- | --- | --- |
-| 03 | [IAM Lab 03](lab-03-object-access-denied/) | Resource ARN specificity | Associate | Intermediate |
-| 06 | [IAM Lab 06](lab-06-lambda-role-denied/) | `iam:PassRole` | Associate | Intermediate |
+| # | Lab | Level | Difficulty |
+| --- | --- | --- | --- |
+| 03 | [Lab 03 — Access Denied III](lab-03-access-denied-iii/) | Associate | Intermediate |
+| 06 | [Lab 06 — Access Denied VI](lab-06-access-denied-vi/) | Associate | Intermediate |
 
-### Advanced
+### Expert
 
-| # | Lab | Topic | Level | Difficulty |
-| --- | --- | --- | --- | --- |
-| 04 | [IAM Lab 04](lab-04-unexpected-access-denied/) | Permissions boundaries | Professional | Advanced |
-| 05 | [IAM Lab 05](lab-05-access-stopped-working/) | IAM policy conditions | Professional | Advanced |
+| # | Lab | Level | Difficulty |
+| --- | --- | --- | --- |
+| 04 | [Lab 04 — Access Denied IV](lab-04-access-denied-iv/) | Professional | Expert |
+| 05 | [Lab 05 — Access Denied V](lab-05-access-denied-v/) | Professional | Expert |
 
 ---
 

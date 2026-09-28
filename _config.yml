@@ -5,6 +5,8 @@ url: "https://www.cloudpathacademy.com"
 theme: jekyll-theme-slate
 
 # Build settings
+plugins:
+  - jekyll-redirect-from
 markdown: kramdown
 highlighter: rouge
 

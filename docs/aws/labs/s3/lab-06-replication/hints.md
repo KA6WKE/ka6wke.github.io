@@ -2,7 +2,7 @@
 layout: default
 ---
 
-# Hints — S3 Replication - Lab 06
+# Hints — Replication - Lab 06
 
 Open each hint only after you've spent time investigating on your own.
 
@@ -65,5 +65,12 @@ silently excluded and never replicated to the destination.
 4. Save the rule
 5. Upload any file to the source bucket (e.g., upload a test `.txt` file via **Upload**)
 6. Wait a few seconds, then open the destination bucket — the file should appear
+
+---
+
+**References**
+
+- [Setting up replication](https://docs.aws.amazon.com/AmazonS3/latest/userguide/replication-how-setup.html)
+- [Replication configuration overview](https://docs.aws.amazon.com/AmazonS3/latest/userguide/replication-add-config.html)
 
 </details>

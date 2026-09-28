@@ -45,20 +45,20 @@
               items:
                 - title: Beginner
                   items:
-                    - title: Lab 01 — Security Groups
-                      url: /docs/aws/labs/ec2/lab-01-http-blocked
-                    - title: Lab 02 — Instance Connect
-                      url: /docs/aws/labs/ec2/lab-02-instance-connect
-                    - title: Lab 03 — Elastic IP
-                      url: /docs/aws/labs/ec2/lab-03-no-public-ip
-                    - title: Lab 04 — SSM Session Manager
-                      url: /docs/aws/labs/ec2/lab-04-no-iam-role
+                    - title: "Lab 01 — Web Access I"
+                      url: /docs/aws/labs/ec2/lab-01-web-access-i
+                    - title: "Lab 02 — Instance Access I"
+                      url: /docs/aws/labs/ec2/lab-02-instance-access-i
+                    - title: "Lab 03 — Web Access II"
+                      url: /docs/aws/labs/ec2/lab-03-web-access-ii
+                    - title: "Lab 04 — Instance Access II"
+                      url: /docs/aws/labs/ec2/lab-04-instance-access-ii
                 - title: Intermediate
                   items:
-                    - title: Lab 05 — SSM Session Manager
-                      url: /docs/aws/labs/ec2/lab-05-missing-ssm-policy
-                    - title: Lab 06 — User Data
-                      url: /docs/aws/labs/ec2/lab-06-user-data
+                    - title: "Lab 05 — Instance Access III"
+                      url: /docs/aws/labs/ec2/lab-05-instance-access-iii
+                    - title: "Lab 06 — Web Access III"
+                      url: /docs/aws/labs/ec2/lab-06-web-access-iii
                 - title: Expert
                   items:
                     - title: Coming Soon
@@ -67,40 +67,40 @@
               items:
                 - title: Beginner
                   items:
-                    - title: Lab 01 — S3 Read Access
-                      url: /docs/aws/labs/iam/lab-01-s3-read-denied
-                    - title: Lab 02 — Policy Update
-                      url: /docs/aws/labs/iam/lab-02-role-access-denied
+                    - title: "Lab 01 — Access Denied I"
+                      url: /docs/aws/labs/iam/lab-01-access-denied-i
+                    - title: "Lab 02 — Access Denied II"
+                      url: /docs/aws/labs/iam/lab-02-access-denied-ii
                 - title: Intermediate
                   items:
-                    - title: Lab 03 — Object-Level Access
-                      url: /docs/aws/labs/iam/lab-03-object-access-denied
-                    - title: Lab 06 — PassRole to Lambda
-                      url: /docs/aws/labs/iam/lab-06-lambda-role-denied
+                    - title: "Lab 03 — Access Denied III"
+                      url: /docs/aws/labs/iam/lab-03-access-denied-iii
+                    - title: "Lab 06 — Access Denied VI"
+                      url: /docs/aws/labs/iam/lab-06-access-denied-vi
                 - title: Expert
                   items:
-                    - title: Lab 04 — Unexpected Denial
-                      url: /docs/aws/labs/iam/lab-04-unexpected-access-denied
-                    - title: Lab 05 — Expiring Access
-                      url: /docs/aws/labs/iam/lab-05-access-stopped-working
+                    - title: "Lab 04 — Access Denied IV"
+                      url: /docs/aws/labs/iam/lab-04-access-denied-iv
+                    - title: "Lab 05 — Access Denied V"
+                      url: /docs/aws/labs/iam/lab-05-access-denied-v
             - title: Amazon S3
               url: /docs/aws/labs/s3
               items:
                 - title: Beginner
                   items:
-                    - title: Lab 01 — Access
-                      url: /docs/aws/labs/s3/lab-01-s3-access
-                    - title: Lab 02 — Endpoint
-                      url: /docs/aws/labs/s3/lab-02-endpoint
-                    - title: Lab 03 — Recovery
-                      url: /docs/aws/labs/s3/lab-03-versioning
-                    - title: Lab 04 — Sharing
-                      url: /docs/aws/labs/s3/lab-04-presigned-url
-                    - title: Lab 05 — Permissions
-                      url: /docs/aws/labs/s3/lab-05-permissions
+                    - title: "Lab 01 — Website Access I"
+                      url: /docs/aws/labs/s3/lab-01-website-access-i
+                    - title: "Lab 02 — Website Access II"
+                      url: /docs/aws/labs/s3/lab-02-website-access-ii
+                    - title: "Lab 03 — Site Content"
+                      url: /docs/aws/labs/s3/lab-03-site-content
+                    - title: "Lab 04 — Shared Link"
+                      url: /docs/aws/labs/s3/lab-04-shared-link
+                    - title: "Lab 05 — Website Access III"
+                      url: /docs/aws/labs/s3/lab-05-website-access-iii
                 - title: Intermediate
                   items:
-                    - title: Lab 06 — Replication
+                    - title: "Lab 06 — Replication"
                       url: /docs/aws/labs/s3/lab-06-replication
                 - title: Expert
                   items:
@@ -113,28 +113,28 @@
                     - title: Coming Soon
                 - title: Intermediate
                   items:
-                    - title: Lab 01 — IGW Routing
-                      url: /docs/aws/labs/vpc/lab-01-igw-routing
-                    - title: Lab 02 — Network ACLs
-                      url: /docs/aws/labs/vpc/lab-02-nacl
-                    - title: Lab 03 — Security Groups
-                      url: /docs/aws/labs/vpc/lab-03-sg
-                    - title: Lab 04 — RT Association
-                      url: /docs/aws/labs/vpc/lab-04-rt-assoc
-                    - title: Lab 05 — VPC Settings
-                      url: /docs/aws/labs/vpc/lab-05-vpc-settings
-                    - title: Lab 08 — VPC Peering
-                      url: /docs/aws/labs/vpc/lab-08-vpc-peering
-                    - title: Lab 09 — VPC Endpoints
-                      url: /docs/aws/labs/vpc/lab-09-vpc-endpoint
-                    - title: Lab 10 — Network ACLs
-                      url: /docs/aws/labs/vpc/lab-10-nacl
+                    - title: "Lab 01 — Web Access I"
+                      url: /docs/aws/labs/vpc/lab-01-web-access-i
+                    - title: "Lab 02 — Web Access II"
+                      url: /docs/aws/labs/vpc/lab-02-web-access-ii
+                    - title: "Lab 03 — Web Access III"
+                      url: /docs/aws/labs/vpc/lab-03-web-access-iii
+                    - title: "Lab 04 — Web Access IV"
+                      url: /docs/aws/labs/vpc/lab-04-web-access-iv
+                    - title: "Lab 05 — Web Access V"
+                      url: /docs/aws/labs/vpc/lab-05-web-access-v
+                    - title: "Lab 08 — Cross-VPC Access"
+                      url: /docs/aws/labs/vpc/lab-08-cross-vpc-access
+                    - title: "Lab 09 — Private S3 Access"
+                      url: /docs/aws/labs/vpc/lab-09-private-s3-access
+                    - title: "Lab 10 — Web Access VI"
+                      url: /docs/aws/labs/vpc/lab-10-web-access-vi
                 - title: Expert
                   items:
-                    - title: Lab 06 — Private Subnets
-                      url: /docs/aws/labs/vpc/lab-06-private-subnet
-                    - title: Lab 07 — NAT Gateway
-                      url: /docs/aws/labs/vpc/lab-07-nat-gateway
+                    - title: "Lab 06 — Outbound Access I"
+                      url: /docs/aws/labs/vpc/lab-06-outbound-access-i
+                    - title: "Lab 07 — Outbound Access II"
+                      url: /docs/aws/labs/vpc/lab-07-outbound-access-ii
     - title: Developer Associate (DVA-C02)
       items:
         - title: AWS Certified Developer Associate (DVA-C02) Domain 1
@@ -152,20 +152,20 @@
               items:
                 - title: Beginner
                   items:
-                    - title: Lab 01 — Security Groups
-                      url: /docs/aws/labs/ec2/lab-01-http-blocked
-                    - title: Lab 02 — Instance Connect
-                      url: /docs/aws/labs/ec2/lab-02-instance-connect
-                    - title: Lab 03 — Elastic IP
-                      url: /docs/aws/labs/ec2/lab-03-no-public-ip
-                    - title: Lab 04 — SSM Session Manager
-                      url: /docs/aws/labs/ec2/lab-04-no-iam-role
+                    - title: "Lab 01 — Web Access I"
+                      url: /docs/aws/labs/ec2/lab-01-web-access-i
+                    - title: "Lab 02 — Instance Access I"
+                      url: /docs/aws/labs/ec2/lab-02-instance-access-i
+                    - title: "Lab 03 — Web Access II"
+                      url: /docs/aws/labs/ec2/lab-03-web-access-ii
+                    - title: "Lab 04 — Instance Access II"
+                      url: /docs/aws/labs/ec2/lab-04-instance-access-ii
                 - title: Intermediate
                   items:
-                    - title: Lab 05 — SSM Session Manager
-                      url: /docs/aws/labs/ec2/lab-05-missing-ssm-policy
-                    - title: Lab 06 — User Data
-                      url: /docs/aws/labs/ec2/lab-06-user-data
+                    - title: "Lab 05 — Instance Access III"
+                      url: /docs/aws/labs/ec2/lab-05-instance-access-iii
+                    - title: "Lab 06 — Web Access III"
+                      url: /docs/aws/labs/ec2/lab-06-web-access-iii
                 - title: Expert
                   items:
                     - title: Coming Soon
@@ -174,40 +174,40 @@
               items:
                 - title: Beginner
                   items:
-                    - title: Lab 01 — S3 Read Access
-                      url: /docs/aws/labs/iam/lab-01-s3-read-denied
-                    - title: Lab 02 — Policy Update
-                      url: /docs/aws/labs/iam/lab-02-role-access-denied
+                    - title: "Lab 01 — Access Denied I"
+                      url: /docs/aws/labs/iam/lab-01-access-denied-i
+                    - title: "Lab 02 — Access Denied II"
+                      url: /docs/aws/labs/iam/lab-02-access-denied-ii
                 - title: Intermediate
                   items:
-                    - title: Lab 03 — Object-Level Access
-                      url: /docs/aws/labs/iam/lab-03-object-access-denied
-                    - title: Lab 06 — PassRole to Lambda
-                      url: /docs/aws/labs/iam/lab-06-lambda-role-denied
+                    - title: "Lab 03 — Access Denied III"
+                      url: /docs/aws/labs/iam/lab-03-access-denied-iii
+                    - title: "Lab 06 — Access Denied VI"
+                      url: /docs/aws/labs/iam/lab-06-access-denied-vi
                 - title: Expert
                   items:
-                    - title: Lab 04 — Unexpected Denial
-                      url: /docs/aws/labs/iam/lab-04-unexpected-access-denied
-                    - title: Lab 05 — Expiring Access
-                      url: /docs/aws/labs/iam/lab-05-access-stopped-working
+                    - title: "Lab 04 — Access Denied IV"
+                      url: /docs/aws/labs/iam/lab-04-access-denied-iv
+                    - title: "Lab 05 — Access Denied V"
+                      url: /docs/aws/labs/iam/lab-05-access-denied-v
             - title: Amazon S3
               url: /docs/aws/labs/s3
               items:
                 - title: Beginner
                   items:
-                    - title: Lab 01 — Access
-                      url: /docs/aws/labs/s3/lab-01-s3-access
-                    - title: Lab 02 — Endpoint
-                      url: /docs/aws/labs/s3/lab-02-endpoint
-                    - title: Lab 03 — Recovery
-                      url: /docs/aws/labs/s3/lab-03-versioning
-                    - title: Lab 04 — Sharing
-                      url: /docs/aws/labs/s3/lab-04-presigned-url
-                    - title: Lab 05 — Permissions
-                      url: /docs/aws/labs/s3/lab-05-permissions
+                    - title: "Lab 01 — Website Access I"
+                      url: /docs/aws/labs/s3/lab-01-website-access-i
+                    - title: "Lab 02 — Website Access II"
+                      url: /docs/aws/labs/s3/lab-02-website-access-ii
+                    - title: "Lab 03 — Site Content"
+                      url: /docs/aws/labs/s3/lab-03-site-content
+                    - title: "Lab 04 — Shared Link"
+                      url: /docs/aws/labs/s3/lab-04-shared-link
+                    - title: "Lab 05 — Website Access III"
+                      url: /docs/aws/labs/s3/lab-05-website-access-iii
                 - title: Intermediate
                   items:
-                    - title: Lab 06 — Replication
+                    - title: "Lab 06 — Replication"
                       url: /docs/aws/labs/s3/lab-06-replication
                 - title: Expert
                   items:
@@ -220,28 +220,28 @@
                     - title: Coming Soon
                 - title: Intermediate
                   items:
-                    - title: Lab 01 — IGW Routing
-                      url: /docs/aws/labs/vpc/lab-01-igw-routing
-                    - title: Lab 02 — Network ACLs
-                      url: /docs/aws/labs/vpc/lab-02-nacl
-                    - title: Lab 03 — Security Groups
-                      url: /docs/aws/labs/vpc/lab-03-sg
-                    - title: Lab 04 — RT Association
-                      url: /docs/aws/labs/vpc/lab-04-rt-assoc
-                    - title: Lab 05 — VPC Settings
-                      url: /docs/aws/labs/vpc/lab-05-vpc-settings
-                    - title: Lab 08 — VPC Peering
-                      url: /docs/aws/labs/vpc/lab-08-vpc-peering
-                    - title: Lab 09 — VPC Endpoints
-                      url: /docs/aws/labs/vpc/lab-09-vpc-endpoint
-                    - title: Lab 10 — Network ACLs
-                      url: /docs/aws/labs/vpc/lab-10-nacl
+                    - title: "Lab 01 — Web Access I"
+                      url: /docs/aws/labs/vpc/lab-01-web-access-i
+                    - title: "Lab 02 — Web Access II"
+                      url: /docs/aws/labs/vpc/lab-02-web-access-ii
+                    - title: "Lab 03 — Web Access III"
+                      url: /docs/aws/labs/vpc/lab-03-web-access-iii
+                    - title: "Lab 04 — Web Access IV"
+                      url: /docs/aws/labs/vpc/lab-04-web-access-iv
+                    - title: "Lab 05 — Web Access V"
+                      url: /docs/aws/labs/vpc/lab-05-web-access-v
+                    - title: "Lab 08 — Cross-VPC Access"
+                      url: /docs/aws/labs/vpc/lab-08-cross-vpc-access
+                    - title: "Lab 09 — Private S3 Access"
+                      url: /docs/aws/labs/vpc/lab-09-private-s3-access
+                    - title: "Lab 10 — Web Access VI"
+                      url: /docs/aws/labs/vpc/lab-10-web-access-vi
                 - title: Expert
                   items:
-                    - title: Lab 06 — Private Subnets
-                      url: /docs/aws/labs/vpc/lab-06-private-subnet
-                    - title: Lab 07 — NAT Gateway
-                      url: /docs/aws/labs/vpc/lab-07-nat-gateway
+                    - title: "Lab 06 — Outbound Access I"
+                      url: /docs/aws/labs/vpc/lab-06-outbound-access-i
+                    - title: "Lab 07 — Outbound Access II"
+                      url: /docs/aws/labs/vpc/lab-07-outbound-access-ii
     - title: Machine Learning Engineer Associate (MLA-C01)
       items:
         - title: AWS Certified Machine Learning Engineer Associate (MLA-C01) Domain 1
@@ -269,20 +269,20 @@
               items:
                 - title: Beginner
                   items:
-                    - title: Lab 01 — Security Groups
-                      url: /docs/aws/labs/ec2/lab-01-http-blocked
-                    - title: Lab 02 — Instance Connect
-                      url: /docs/aws/labs/ec2/lab-02-instance-connect
-                    - title: Lab 03 — Elastic IP
-                      url: /docs/aws/labs/ec2/lab-03-no-public-ip
-                    - title: Lab 04 — SSM Session Manager
-                      url: /docs/aws/labs/ec2/lab-04-no-iam-role
+                    - title: "Lab 01 — Web Access I"
+                      url: /docs/aws/labs/ec2/lab-01-web-access-i
+                    - title: "Lab 02 — Instance Access I"
+                      url: /docs/aws/labs/ec2/lab-02-instance-access-i
+                    - title: "Lab 03 — Web Access II"
+                      url: /docs/aws/labs/ec2/lab-03-web-access-ii
+                    - title: "Lab 04 — Instance Access II"
+                      url: /docs/aws/labs/ec2/lab-04-instance-access-ii
                 - title: Intermediate
                   items:
-                    - title: Lab 05 — SSM Session Manager
-                      url: /docs/aws/labs/ec2/lab-05-missing-ssm-policy
-                    - title: Lab 06 — User Data
-                      url: /docs/aws/labs/ec2/lab-06-user-data
+                    - title: "Lab 05 — Instance Access III"
+                      url: /docs/aws/labs/ec2/lab-05-instance-access-iii
+                    - title: "Lab 06 — Web Access III"
+                      url: /docs/aws/labs/ec2/lab-06-web-access-iii
                 - title: Expert
                   items:
                     - title: Coming Soon
@@ -291,40 +291,40 @@
               items:
                 - title: Beginner
                   items:
-                    - title: Lab 01 — S3 Read Access
-                      url: /docs/aws/labs/iam/lab-01-s3-read-denied
-                    - title: Lab 02 — Policy Update
-                      url: /docs/aws/labs/iam/lab-02-role-access-denied
+                    - title: "Lab 01 — Access Denied I"
+                      url: /docs/aws/labs/iam/lab-01-access-denied-i
+                    - title: "Lab 02 — Access Denied II"
+                      url: /docs/aws/labs/iam/lab-02-access-denied-ii
                 - title: Intermediate
                   items:
-                    - title: Lab 03 — Object-Level Access
-                      url: /docs/aws/labs/iam/lab-03-object-access-denied
-                    - title: Lab 06 — PassRole to Lambda
-                      url: /docs/aws/labs/iam/lab-06-lambda-role-denied
+                    - title: "Lab 03 — Access Denied III"
+                      url: /docs/aws/labs/iam/lab-03-access-denied-iii
+                    - title: "Lab 06 — Access Denied VI"
+                      url: /docs/aws/labs/iam/lab-06-access-denied-vi
                 - title: Expert
                   items:
-                    - title: Lab 04 — Unexpected Denial
-                      url: /docs/aws/labs/iam/lab-04-unexpected-access-denied
-                    - title: Lab 05 — Expiring Access
-                      url: /docs/aws/labs/iam/lab-05-access-stopped-working
+                    - title: "Lab 04 — Access Denied IV"
+                      url: /docs/aws/labs/iam/lab-04-access-denied-iv
+                    - title: "Lab 05 — Access Denied V"
+                      url: /docs/aws/labs/iam/lab-05-access-denied-v
             - title: Amazon S3
               url: /docs/aws/labs/s3
               items:
                 - title: Beginner
                   items:
-                    - title: Lab 01 — Access
-                      url: /docs/aws/labs/s3/lab-01-s3-access
-                    - title: Lab 02 — Endpoint
-                      url: /docs/aws/labs/s3/lab-02-endpoint
-                    - title: Lab 03 — Recovery
-                      url: /docs/aws/labs/s3/lab-03-versioning
-                    - title: Lab 04 — Sharing
-                      url: /docs/aws/labs/s3/lab-04-presigned-url
-                    - title: Lab 05 — Permissions
-                      url: /docs/aws/labs/s3/lab-05-permissions
+                    - title: "Lab 01 — Website Access I"
+                      url: /docs/aws/labs/s3/lab-01-website-access-i
+                    - title: "Lab 02 — Website Access II"
+                      url: /docs/aws/labs/s3/lab-02-website-access-ii
+                    - title: "Lab 03 — Site Content"
+                      url: /docs/aws/labs/s3/lab-03-site-content
+                    - title: "Lab 04 — Shared Link"
+                      url: /docs/aws/labs/s3/lab-04-shared-link
+                    - title: "Lab 05 — Website Access III"
+                      url: /docs/aws/labs/s3/lab-05-website-access-iii
                 - title: Intermediate
                   items:
-                    - title: Lab 06 — Replication
+                    - title: "Lab 06 — Replication"
                       url: /docs/aws/labs/s3/lab-06-replication
                 - title: Expert
                   items:
@@ -337,28 +337,28 @@
                     - title: Coming Soon
                 - title: Intermediate
                   items:
-                    - title: Lab 01 — IGW Routing
-                      url: /docs/aws/labs/vpc/lab-01-igw-routing
-                    - title: Lab 02 — Network ACLs
-                      url: /docs/aws/labs/vpc/lab-02-nacl
-                    - title: Lab 03 — Security Groups
-                      url: /docs/aws/labs/vpc/lab-03-sg
-                    - title: Lab 04 — RT Association
-                      url: /docs/aws/labs/vpc/lab-04-rt-assoc
-                    - title: Lab 05 — VPC Settings
-                      url: /docs/aws/labs/vpc/lab-05-vpc-settings
-                    - title: Lab 08 — VPC Peering
-                      url: /docs/aws/labs/vpc/lab-08-vpc-peering
-                    - title: Lab 09 — VPC Endpoints
-                      url: /docs/aws/labs/vpc/lab-09-vpc-endpoint
-                    - title: Lab 10 — Network ACLs
-                      url: /docs/aws/labs/vpc/lab-10-nacl
+                    - title: "Lab 01 — Web Access I"
+                      url: /docs/aws/labs/vpc/lab-01-web-access-i
+                    - title: "Lab 02 — Web Access II"
+                      url: /docs/aws/labs/vpc/lab-02-web-access-ii
+                    - title: "Lab 03 — Web Access III"
+                      url: /docs/aws/labs/vpc/lab-03-web-access-iii
+                    - title: "Lab 04 — Web Access IV"
+                      url: /docs/aws/labs/vpc/lab-04-web-access-iv
+                    - title: "Lab 05 — Web Access V"
+                      url: /docs/aws/labs/vpc/lab-05-web-access-v
+                    - title: "Lab 08 — Cross-VPC Access"
+                      url: /docs/aws/labs/vpc/lab-08-cross-vpc-access
+                    - title: "Lab 09 — Private S3 Access"
+                      url: /docs/aws/labs/vpc/lab-09-private-s3-access
+                    - title: "Lab 10 — Web Access VI"
+                      url: /docs/aws/labs/vpc/lab-10-web-access-vi
                 - title: Expert
                   items:
-                    - title: Lab 06 — Private Subnets
-                      url: /docs/aws/labs/vpc/lab-06-private-subnet
-                    - title: Lab 07 — NAT Gateway
-                      url: /docs/aws/labs/vpc/lab-07-nat-gateway
+                    - title: "Lab 06 — Outbound Access I"
+                      url: /docs/aws/labs/vpc/lab-06-outbound-access-i
+                    - title: "Lab 07 — Outbound Access II"
+                      url: /docs/aws/labs/vpc/lab-07-outbound-access-ii
 - title: Professional
   items:
     - title: AI - Professional (AIP-C01)
@@ -440,21 +440,21 @@
       items:
         - title: Beginner
           items:
-            - title: "Lab 01 — EC2 Security Groups"
-              url: /docs/aws/labs/ec2/lab-01-http-blocked
-            - title: "Lab 02 — EC2 Instance Connect"
-              url: /docs/aws/labs/ec2/lab-02-instance-connect
-            - title: "Lab 03 — EC2 Elastic IP"
-              url: /docs/aws/labs/ec2/lab-03-no-public-ip
-            - title: "Lab 04 — EC2 SSM Session Manager"
-              url: /docs/aws/labs/ec2/lab-04-no-iam-role
+            - title: "Lab 01 — Web Access I"
+              url: /docs/aws/labs/ec2/lab-01-web-access-i
+            - title: "Lab 02 — Instance Access I"
+              url: /docs/aws/labs/ec2/lab-02-instance-access-i
+            - title: "Lab 03 — Web Access II"
+              url: /docs/aws/labs/ec2/lab-03-web-access-ii
+            - title: "Lab 04 — Instance Access II"
+              url: /docs/aws/labs/ec2/lab-04-instance-access-ii
         - title: Intermediate
           items:
-            - title: "Lab 05 — SSM Session Manager"
-              url: /docs/aws/labs/ec2/lab-05-missing-ssm-policy
-            - title: "Lab 06 — EC2 User Data"
-              url: /docs/aws/labs/ec2/lab-06-user-data
-        - title: Advanced
+            - title: "Lab 05 — Instance Access III"
+              url: /docs/aws/labs/ec2/lab-05-instance-access-iii
+            - title: "Lab 06 — Web Access III"
+              url: /docs/aws/labs/ec2/lab-06-web-access-iii
+        - title: Expert
           items:
             - title: Coming Soon
     - title: AWS Identity and Access Management (IAM)
@@ -462,42 +462,42 @@
       items:
         - title: Beginner
           items:
-            - title: "Lab 01 — S3 Read Access"
-              url: /docs/aws/labs/iam/lab-01-s3-read-denied
-            - title: "Lab 02 — Policy Update"
-              url: /docs/aws/labs/iam/lab-02-role-access-denied
+            - title: "Lab 01 — Access Denied I"
+              url: /docs/aws/labs/iam/lab-01-access-denied-i
+            - title: "Lab 02 — Access Denied II"
+              url: /docs/aws/labs/iam/lab-02-access-denied-ii
         - title: Intermediate
           items:
-            - title: "Lab 03 — Object-Level Access"
-              url: /docs/aws/labs/iam/lab-03-object-access-denied
-            - title: "Lab 06 — PassRole to Lambda"
-              url: /docs/aws/labs/iam/lab-06-lambda-role-denied
-        - title: Advanced
+            - title: "Lab 03 — Access Denied III"
+              url: /docs/aws/labs/iam/lab-03-access-denied-iii
+            - title: "Lab 06 — Access Denied VI"
+              url: /docs/aws/labs/iam/lab-06-access-denied-vi
+        - title: Expert
           items:
-            - title: "Lab 04 — Unexpected Denial"
-              url: /docs/aws/labs/iam/lab-04-unexpected-access-denied
-            - title: "Lab 05 — Expiring Access"
-              url: /docs/aws/labs/iam/lab-05-access-stopped-working
+            - title: "Lab 04 — Access Denied IV"
+              url: /docs/aws/labs/iam/lab-04-access-denied-iv
+            - title: "Lab 05 — Access Denied V"
+              url: /docs/aws/labs/iam/lab-05-access-denied-v
     - title: Amazon S3
       url: /docs/aws/labs/s3
       items:
         - title: Beginner
           items:
-            - title: "Lab 01 — Access"
-              url: /docs/aws/labs/s3/lab-01-s3-access
-            - title: "Lab 02 — Endpoint"
-              url: /docs/aws/labs/s3/lab-02-endpoint
-            - title: "Lab 03 — Recovery"
-              url: /docs/aws/labs/s3/lab-03-versioning
-            - title: "Lab 04 — Sharing"
-              url: /docs/aws/labs/s3/lab-04-presigned-url
-            - title: "Lab 05 — Permissions"
-              url: /docs/aws/labs/s3/lab-05-permissions
+            - title: "Lab 01 — Website Access I"
+              url: /docs/aws/labs/s3/lab-01-website-access-i
+            - title: "Lab 02 — Website Access II"
+              url: /docs/aws/labs/s3/lab-02-website-access-ii
+            - title: "Lab 03 — Site Content"
+              url: /docs/aws/labs/s3/lab-03-site-content
+            - title: "Lab 04 — Shared Link"
+              url: /docs/aws/labs/s3/lab-04-shared-link
+            - title: "Lab 05 — Website Access III"
+              url: /docs/aws/labs/s3/lab-05-website-access-iii
         - title: Intermediate
           items:
             - title: "Lab 06 — Replication"
               url: /docs/aws/labs/s3/lab-06-replication
-        - title: Advanced
+        - title: Expert
           items:
             - title: Coming Soon
     - title: Amazon VPC
@@ -508,25 +508,25 @@
             - title: Coming Soon
         - title: Intermediate
           items:
-            - title: "Lab 01 — IGW Routing"
-              url: /docs/aws/labs/vpc/lab-01-igw-routing
-            - title: "Lab 02 — Network ACLs"
-              url: /docs/aws/labs/vpc/lab-02-nacl
-            - title: "Lab 03 — Security Groups"
-              url: /docs/aws/labs/vpc/lab-03-sg
-            - title: "Lab 04 — RT Association"
-              url: /docs/aws/labs/vpc/lab-04-rt-assoc
-            - title: "Lab 05 — VPC Settings"
-              url: /docs/aws/labs/vpc/lab-05-vpc-settings
-            - title: "Lab 08 — VPC Peering"
-              url: /docs/aws/labs/vpc/lab-08-vpc-peering
-            - title: "Lab 09 — VPC Endpoints"
-              url: /docs/aws/labs/vpc/lab-09-vpc-endpoint
-            - title: "Lab 10 — Network ACLs"
-              url: /docs/aws/labs/vpc/lab-10-nacl
-        - title: Advanced
+            - title: "Lab 01 — Web Access I"
+              url: /docs/aws/labs/vpc/lab-01-web-access-i
+            - title: "Lab 02 — Web Access II"
+              url: /docs/aws/labs/vpc/lab-02-web-access-ii
+            - title: "Lab 03 — Web Access III"
+              url: /docs/aws/labs/vpc/lab-03-web-access-iii
+            - title: "Lab 04 — Web Access IV"
+              url: /docs/aws/labs/vpc/lab-04-web-access-iv
+            - title: "Lab 05 — Web Access V"
+              url: /docs/aws/labs/vpc/lab-05-web-access-v
+            - title: "Lab 08 — Cross-VPC Access"
+              url: /docs/aws/labs/vpc/lab-08-cross-vpc-access
+            - title: "Lab 09 — Private S3 Access"
+              url: /docs/aws/labs/vpc/lab-09-private-s3-access
+            - title: "Lab 10 — Web Access VI"
+              url: /docs/aws/labs/vpc/lab-10-web-access-vi
+        - title: Expert
           items:
-            - title: "Lab 06 — Private Subnets"
-              url: /docs/aws/labs/vpc/lab-06-private-subnet
-            - title: "Lab 07 — NAT Gateway"
-              url: /docs/aws/labs/vpc/lab-07-nat-gateway
+            - title: "Lab 06 — Outbound Access I"
+              url: /docs/aws/labs/vpc/lab-06-outbound-access-i
+            - title: "Lab 07 — Outbound Access II"
+              url: /docs/aws/labs/vpc/lab-07-outbound-access-ii

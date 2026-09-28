@@ -1,0 +1,12 @@
+#!/bin/sh
+# Keep the footer's "Last updated" date in sync with the commit date.
+# Enable once per clone with: git config core.hooksPath .githooks
+
+file="_data/site_info.yml"
+[ -f "$file" ] || exit 0
+
+today=$(date +%F)
+grep -q "^last_updated: $today\$" "$file" && exit 0
+
+sed -i "s/^last_updated: .*/last_updated: $today/" "$file" || exit 1
+git add "$file"

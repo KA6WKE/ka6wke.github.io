@@ -11,17 +11,46 @@ All broken labs must follow these conventions, derived from the S3 and EC2 lab i
 ```
 docs/aws/labs/<service>/
   index.md                           ← overview page for the service (lists all labs)
-  lab-##-<title-slug>/
+  lab-##-<generic-slug>/
     index.md                         ← lab page (Jekyll-rendered)
     hints.md                         ← hints page (Jekyll-rendered)
-    lab-##-<title-slug>.yaml         ← CloudFormation template (downloadable)
+    lab-##-<generic-slug>.yaml       ← CloudFormation template (downloadable)
 ```
+
+## No-giveaway rule (applies to everything a learner sees before hints.md)
+
+Nothing outside `hints.md` may reveal or suggest the root cause. Use generic,
+workload- or symptom-level wording only.
+
+- **Names** — folder, template, URL, `title:`, H1, nav label, and index table cells use a
+  generic label plus a Roman numeral when labels repeat: `Web Access II`, `Access Denied IV`,
+  `Model Training III`. Never name the broken component (`nacl`, `kms-key-policy`,
+  `missing-ssm-policy`, `no-public-ip`).
+- **Scenario / The Problem** — describe the setup, the symptom, and the observed error only.
+  No "what's been ruled out" lists ("the security group is correct…"), no steering
+  questions ("so what is it missing?"), no naming the culprit.
+- **Fix the Lab** — state the goal only ("Diagnose why … and fix it so the result matches
+  Expected"). Neutral operational help (how to open a Session Manager terminal) is fine.
+- **What Was Deployed** — list resources with neutral purposes; no notes like
+  "auto-assign public IP is disabled" or "role with no policies".
+- **Cost / Cleanup** — no fix-specific wording. Put cleanup steps that only apply after the
+  fix (detach a role you created, delete a NAT gateway you created) in the hints.md Full
+  Solution; the page gets a generic "delete anything you created outside the stack" note.
+- **Resources** — general service guides only. Cause-specific links go under a
+  **References** block at the end of the hints.md Full Solution.
+- **Templates** — no `# THE BREAK` (or any) comments marking the defect; resource names,
+  resource `Description`s, header `Description`, and Output descriptions stay neutral
+  (no "(will load once fixed)", no "permissions boundary" output).
+- **Commit messages** — generic too; the repository is public.
 
 ## File naming
 
-- Lab directories: `lab-##-<title-slug>/` — slug is the lab title lowercased, spaces replaced with hyphens
-- YAML files: `lab-##-<title-slug>.yaml` — slug derived from the H1 heading in `index.md`
-- Title slug examples: `lab-01-ec2-security-groups`, `lab-03-ec2-elastic-ip`
+- Lab directories: `lab-##-<generic-slug>/` — slug is the generic lab title lowercased,
+  spaces replaced with hyphens (e.g. `lab-02-web-access-ii`)
+- YAML files: `lab-##-<generic-slug>.yaml` — same slug as the directory
+- **Renaming a published lab**: add `redirect_from: /docs/aws/labs/<service>/<old-slug>/`
+  to the lab's `index.md` front matter (`jekyll-redirect-from` is enabled in `_config.yml`)
+  so shared links keep working
 
 ## index.md frontmatter (canonical pattern)
 
@@ -34,6 +63,9 @@ lab_service: <s3|ec2|iam|...>
 lab_number: "##"
 ---
 ```
+
+Difficulty tiers are **Beginner**, **Intermediate**, and **Expert** (not "Advanced") — in
+the `> **Difficulty**:` line, module index headings/tables, and navigation.
 
 ## hints.md frontmatter (required for all labs)
 
@@ -89,13 +121,15 @@ Example: `brokenlabs-ec2-lab-01`, `brokenlabs-s3-lab-03`
 - Service submenus under **AWS Broken Labs** are alphabetical by service name
 - Each service submenu structure:
   ```yaml
-  - title: <Service> Troubleshooting
+  - title: <Service name>
     url: /docs/aws/labs/<service>
     items:
-      - title: "<span style='color: red;'>START HERE</span>"
-        url: /docs/aws/labs/<service>
-      - title: "Lab ## — <Title>"
-        url: /docs/aws/labs/<service>/lab-##-<slug>
+      - title: Beginner | Intermediate | Expert
+        items:
+          - title: "Lab ## — <Generic Title>"
+            url: /docs/aws/labs/<service>/lab-##-<generic-slug>
   ```
+- The same module blocks are repeated under each exam's **Hands-on Labs** submenu
+  (SOA-C03, DVA-C02, SAA-C03, MLA-C01) — keep every copy identical
 - Lab titles in nav use em dash (—), not hyphen (-)
 - Lab titles match the H1 heading in `index.md` (minus the `# ` prefix)

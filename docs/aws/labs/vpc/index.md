@@ -10,9 +10,9 @@ Hands-on troubleshooting labs for Amazon VPC.
 ## Why These Labs
 
 Amazon VPC is the networking foundation for nearly every AWS workload. VPC misconfigurations
-are among the most common — and most frustrating — issues in real AWS environments. A route
-missing from a table, a misconfigured NACL, or an overlooked subnet setting can silently
-block traffic in ways that are hard to diagnose without hands-on experience.
+are among the most common — and most frustrating — issues in real AWS environments. A single
+overlooked setting can silently block traffic in ways that are hard to diagnose without
+hands-on experience.
 
 These labs give you that experience. Each lab deploys a realistic but broken VPC environment
 using CloudFormation. Your job is to diagnose the problem using the AWS Console, identify the
@@ -28,23 +28,23 @@ Beginner labs coming soon.
 
 ### Intermediate
 
-| #   | Lab                                  | Topic                                  | Level        | Difficulty   |
-| --- | ------------------------------------ | -------------------------------------- | ------------ | ------------ |
-| 01  | [VPC Lab 01](lab-01-igw-routing/)    | VPC Route Tables and Internet Gateways | Associate    | Intermediate |
-| 02  | [VPC Lab 02](lab-02-nacl/)           | Network ACLs                           | Associate    | Intermediate |
-| 03  | [VPC Lab 03](lab-03-sg/)             | Security Groups                        | Associate    | Intermediate |
-| 04  | [VPC Lab 04](lab-04-rt-assoc/)       | Route Table Associations               | Associate    | Intermediate |
-| 05  | [VPC Lab 05](lab-05-vpc-settings/)   | VPC Settings                           | Associate    | Intermediate |
-| 08  | [VPC Lab 08](lab-08-vpc-peering/)    | VPC Peering                            | Associate    | Intermediate |
-| 09  | [VPC Lab 09](lab-09-vpc-endpoint/)   | VPC Endpoints                          | Associate    | Intermediate |
-| 10  | [VPC Lab 10](lab-10-nacl/)           | Network ACLs                           | Associate    | Intermediate |
+| # | Lab | Level | Difficulty |
+| --- | --- | --- | --- |
+| 01 | [Lab 01 — Web Access I](lab-01-web-access-i/) | Associate | Intermediate |
+| 02 | [Lab 02 — Web Access II](lab-02-web-access-ii/) | Associate | Intermediate |
+| 03 | [Lab 03 — Web Access III](lab-03-web-access-iii/) | Associate | Intermediate |
+| 04 | [Lab 04 — Web Access IV](lab-04-web-access-iv/) | Associate | Intermediate |
+| 05 | [Lab 05 — Web Access V](lab-05-web-access-v/) | Associate | Intermediate |
+| 08 | [Lab 08 — Cross-VPC Access](lab-08-cross-vpc-access/) | Associate | Intermediate |
+| 09 | [Lab 09 — Private S3 Access](lab-09-private-s3-access/) | Associate | Intermediate |
+| 10 | [Lab 10 — Web Access VI](lab-10-web-access-vi/) | Associate | Intermediate |
 
-### Advanced
+### Expert
 
-| #   | Lab                                  | Topic                                  | Level        | Difficulty   |
-| --- | ------------------------------------ | -------------------------------------- | ------------ | ------------ |
-| 06  | [VPC Lab 06](lab-06-private-subnet/) | Private Subnets                        | Professional | Advanced     |
-| 07  | [VPC Lab 07](lab-07-nat-gateway/)    | NAT Gateways                           | Professional | Advanced     |
+| # | Lab | Level | Difficulty |
+| --- | --- | --- | --- |
+| 06 | [Lab 06 — Outbound Access I](lab-06-outbound-access-i/) | Professional | Expert |
+| 07 | [Lab 07 — Outbound Access II](lab-07-outbound-access-ii/) | Professional | Expert |
 
 ---
 

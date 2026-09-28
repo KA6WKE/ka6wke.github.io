@@ -1,12 +1,12 @@
 ---
 layout: default
-title: "Lab 06: S3 Replication"
+title: "Lab 06: Replication"
 lab_level: associate
 lab_service: s3
 lab_number: "06"
 ---
 
-# Lab 06 - S3 Replication
+# Lab 06 - Replication
 
 > **Difficulty**: Intermediate
 > **Service**: Amazon S3
@@ -14,10 +14,8 @@ lab_number: "06"
 ## Scenario
 
 Your team set up S3 replication to automatically copy objects from a source bucket
-to a destination bucket for backup purposes. The replication rule is in place and
-the stack deployed without errors — but after uploading files to the source bucket,
-nothing is showing up in the destination. Figure out why replication isn't working
-and fix it.
+to a destination bucket for backup purposes. The stack deployed without errors — but
+after uploading files to the source bucket, nothing is showing up in the destination.
 
 ## What Was Deployed
 
@@ -27,8 +25,7 @@ and fix it.
 | `AWS::S3::Bucket` | Destination bucket — should receive replicated objects        |
 | `AWS::IAM::Role`  | IAM role granting S3 permission to perform replication        |
 
-The stack deployed without errors. The replication rule is configured on the source
-bucket. The destination bucket exists and is ready to receive objects.
+The stack deployed without errors.
 
 ## Deploy the Lab
 
@@ -46,12 +43,9 @@ Open both buckets in the [S3 console](https://console.aws.amazon.com/s3).
 **Source bucket**: contains `index.html`
 **Destination bucket**: empty — `index.html` has not been replicated
 
-The replication rule is configured and the IAM role exists. But objects are not being copied to the destination.
-
 ## Fix the Lab
 
-Investigate the replication configuration and determine why objects are not being
-replicated.
+Diagnose why objects are not being replicated and fix it.
 
 To verify the fix:
 
@@ -68,6 +62,5 @@ Need help? Open [hints](hints) for progressive hints.
 ## Resources
 
 - [Amazon S3 User Guide](https://docs.aws.amazon.com/AmazonS3/latest/userguide/Welcome.html)
-- [Setting up replication](https://docs.aws.amazon.com/AmazonS3/latest/userguide/replication-how-setup.html)
-- [Replication configuration overview](https://docs.aws.amazon.com/AmazonS3/latest/userguide/replication-add-config.html)
 - [Questions or bugs? Open a GitHub Issue](https://github.com/KA6WKE/ka6wke.github.io/issues)
+

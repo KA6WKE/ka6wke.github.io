@@ -1,0 +1,68 @@
+AWSTemplateFormatVersion: "2010-09-09"
+Description: >
+  Broken Labs - IAM Lab 04.
+  An IAM role needs to read objects from an S3 bucket, but its requests are denied.
+  Licensed under CC BY-NC-SA 4.0: https://creativecommons.org/licenses/by-nc-sa/4.0/
+  Developed by: Mark Schoonover <mark.schoonover@gmail.com>
+
+Resources:
+
+  LabBucket:
+    Type: AWS::S3::Bucket
+    Properties:
+      BucketName: !Sub "brokenlabs-iam-lab-04-${AWS::Region}-${AWS::AccountId}"
+
+  LabBoundaryPolicy:
+    Type: AWS::IAM::ManagedPolicy
+    Properties:
+      ManagedPolicyName: !Sub "brokenlabs-iam-lab-04-policy-${AWS::Region}-${AWS::AccountId}"
+      PolicyDocument:
+        Version: "2012-10-17"
+        Statement:
+          - Sid: BoundaryAllowedActions
+            Effect: Allow
+            Action:
+              - s3:ListBucket
+            Resource:
+              - !GetAtt LabBucket.Arn
+              - !Sub "${LabBucket.Arn}/*"
+
+  LabRole:
+    Type: AWS::IAM::Role
+    Properties:
+      RoleName: !Sub "brokenlabs-iam-lab-04-role-${AWS::Region}-${AWS::AccountId}"
+      PermissionsBoundary: !Ref LabBoundaryPolicy
+      AssumeRolePolicyDocument:
+        Version: "2012-10-17"
+        Statement:
+          - Effect: Allow
+            Principal:
+              Service: ec2.amazonaws.com
+            Action: sts:AssumeRole
+      Policies:
+        - PolicyName: LabRolePolicy
+          PolicyDocument:
+            Version: "2012-10-17"
+            Statement:
+              - Sid: AllowBucketRead
+                Effect: Allow
+                Action:
+                  - s3:ListBucket
+                  - s3:GetObject
+                Resource:
+                  - !GetAtt LabBucket.Arn
+                  - !Sub "${LabBucket.Arn}/*"
+
+Outputs:
+
+  RoleName:
+    Description: Name of the IAM role to test in the Policy Simulator
+    Value: !Ref LabRole
+
+  TestResourceArn:
+    Description: Resource ARN to simulate s3:GetObject against
+    Value: !Sub "${LabBucket.Arn}/*"
+
+  BucketName:
+    Description: Name of the S3 bucket
+    Value: !Ref LabBucket
