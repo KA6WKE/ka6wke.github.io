@@ -129,7 +129,15 @@ Example: `brokenlabs-ec2-lab-01`, `brokenlabs-s3-lab-03`
           - title: "Lab ## — <Generic Title>"
             url: /docs/aws/labs/<service>/lab-##-<generic-slug>
   ```
-- The same module blocks are repeated under each exam's **Hands-on Labs** submenu
-  (SOA-C03, DVA-C02, SAA-C03, MLA-C01) — keep every copy identical
+- Each exam's **Hands-on Labs** submenu (SOA-C03, DVA-C02, SAA-C03) lists the same
+  services, but **without tier submenus**: each service lists its labs directly, in lab
+  number order, with no "Coming Soon" entries. Keep every exam's copy identical:
+  ```yaml
+  - title: <Service name>
+    url: /docs/aws/labs/<service>
+    items:
+      - title: "Lab ## — <Generic Title>"
+        url: /docs/aws/labs/<service>/lab-##-<generic-slug>
+  ```
 - Lab titles in nav use em dash (—), not hyphen (-)
 - Lab titles match the H1 heading in `index.md` (minus the `# ` prefix)
